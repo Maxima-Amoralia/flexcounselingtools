@@ -1,0 +1,118 @@
+html, body{
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.row-offcanvas {
+  height:100%;
+}
+  
+#sidebar {
+  width: 220px;  
+  background-color: #343a40;
+  position:relative;
+  overflow-y:auto;
+  overflow-x:hidden;
+  position:fixed;
+  float:left;
+
+  border-bottom-right-radius:5px;
+  border-top-right-radius:5px;
+}
+
+.main-content{  
+  width: -webkit-calc(100% - 220px);
+  width:    -moz-calc(100% - 220px);
+  width:         calc(100% - 220px);   
+  padding-left: 40px;
+  padding-right: 40px;
+  position: relative;
+  float:right;
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+
+.main-content.active{ 
+  width: -webkit-calc(100% - 20px);
+  width:    -moz-calc(100% - 20px);
+  width:         calc(100% - 20px); 
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+  position: relative;
+  float:right;
+}
+
+.btn-expand {
+  background-color:transparent !important;
+}
+.btn-expand:focus {
+  background-color:transparent !important;
+}
+
+.btn-expand:hover {
+  background-color:transparent !important;
+}
+
+
+/*
+   * off Canvas sidebar
+   * --------------------------------------------------
+   */
+
+@media screen {
+  .row-offcanvas {
+    position:relative;
+    float:left;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+    
+  .row-offcanvas-left
+  {
+    left: 0px;
+  }
+
+  .row-offcanvas-left.active {
+    position: fixed;
+    left: -200px;
+  }
+
+}
+
+.activity-title{
+    font-weight:600;
+    font-size:24px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color:rgb(128, 128, 128);
+    color:rgb(255, 255, 255);
+    margin: 0px auto;
+    margin-bottom: 15px;
+}
+
+.form-group{
+    position: relative;
+    display:block;
+    margin-bottom: 12px !important;
+}
+
+.form-label{
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.activity-form {
+    background-color:rgb(215, 215, 215);
+    border-radius:20px;
+    padding:15px;
+    position: relative
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}

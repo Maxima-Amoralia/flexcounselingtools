@@ -1,0 +1,314 @@
+{% extends "base.html" %} 
+
+{% block title %}Activities {% endblock %} 
+
+{% block content %}
+
+  {% for ca_activity in user.ca_activity %}
+
+    <div class="activity-form" style="margin-bottom:30px">
+      <form method="POST" id="activity-form">
+
+        <div style="position:absolute; width:100%; padding-right: 40px; padding-top: 8px;">
+          <div style="position:relative;float:right">
+
+            {% if loop.index<user.ca_activity|length %}
+            <button type="button" class="btn btn-outline-light btn-sm reorder-button-down" onClick="">
+              <span aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+            </button>
+            {% endif %}
+            
+            {% if loop.index!=1 %}
+            <button type="button" class="btn btn-outline-light btn-sm reorder-button-up" onClick="">
+              <span aria-hidden="true"><i class="fa fa-angle-up"></i></span>
+            </button>
+            {% endif %}
+
+          </div>
+        </div>
+
+        
+        <div style="text-align: center">
+          <div class="activity-title"> Activity {{loop.index}} </div>
+        </div>
+
+        <div class="form-contents">
+          <div class="form-group">
+            <label for="activity_type" class="form-label">Activity Type:</label><br/>
+
+            <select class="form-select" id="activity_type" name="activity_type" >
+              <option value="Choose an option" hidden>Choose an option</option>
+
+              <option value="Art" {% if ca_activity.activity_type == 'Art' %}} selected {% endif %}>Art</option>
+              <option value="Athletics: Club" {% if ca_activity.activity_type == 'Athletics: Club' %}} selected {% endif %}>Athletics: Club</option>
+              <option value="Athletics: JV/Varsity" {% if ca_activity.activity_type == 'Athletics: JV/Varsity' %}} selected {% endif %}>Athletics: JV/Varsity</option>
+              <option value="Career Oriented" {% if ca_activity.activity_type == 'Career Oriented' %}} selected {% endif %}>Career Oriented</option>
+              <option value="Community Service (Volunteer)" {% if ca_activity.activity_type == 'Community Service (Volunteer)' %}} selected {% endif %}>Community Service (Volunteer)</option>
+              <option value="Computer/Technology" {% if ca_activity.activity_type == 'Computer/Technology' %}} selected {% endif %}>Computer/Technology</option>
+              <option value="Cultural" {% if ca_activity.activity_type == 'Cultural' %}} selected {% endif %}>Cultural</option>
+              <option value="Dance" {% if ca_activity.activity_type == 'Dance' %}} selected {% endif %}>Dance</option>
+              <option value="Debate/Speech" {% if ca_activity.activity_type == 'Debate/Speech' %}} selected {% endif %}>Debate/Speech</option>
+              <option value="Family Responsibilities" {% if ca_activity.activity_type == 'Family Responsibilities' %}} selected {% endif %}>Family Responsibilities</option>
+              <option value="Foreign Exchange" {% if ca_activity.activity_type == 'Foreign Exchange' %}} selected {% endif %}>Foreign Exchange</option>
+              <option value="Foreign Language" {% if ca_activity.activity_type == 'Foreign Language' %}} selected {% endif %}>Foreign Language</option>
+              <option value="Internship" {% if ca_activity.activity_type == 'Internship' %}} selected {% endif %}>Internship</option>
+              <option value="Journalism/Publication" {% if ca_activity.activity_type == 'Journalism/Publication' %}} selected {% endif %}>Journalism/Publication</option>
+              <option value="Junior R.O.T.C." {% if ca_activity.activity_type == 'Junior R.O.T.C.' %}} selected {% endif %}>Junior R.O.T.C.</option>
+              <option value="LGBT" {% if ca_activity.activity_type == 'LGBT' %}} selected {% endif %}>LGBT</option>
+              <option value="Music: Instrumental" {% if ca_activity.activity_type == 'Music: Instrumental' %}} selected {% endif %}>Music: Instrumental</option>
+              <option value="Music: Vocal" {% if ca_activity.activity_type == 'Music: Vocal' %}} selected {% endif %}>Music: Vocal</option>
+              <option value="Religious" {% if ca_activity.activity_type == 'Religious' %}} selected {% endif %}>Religious</option>
+              <option value="Research" {% if ca_activity.activity_type == 'Research' %}} selected {% endif %}>Research</option>
+              <option value="Robotics" {% if ca_activity.activity_type == 'Robotics' %}} selected {% endif %}>Robotics</option>
+              <option value="School Spirit" {% if ca_activity.activity_type == 'School Spirit' %}} selected {% endif %}>School Spirit</option>
+              <option value="Science/Math" {% if ca_activity.activity_type == 'Science/Math' %}} selected {% endif %}>Science/Math</option>
+              <option value="Social Justice" {% if ca_activity.activity_type == 'Social Justice' %}} selected {% endif %}>Social Justice</option>
+              <option value="Student Govt./Politics" {% if ca_activity.activity_type == 'Student Govt./Politics' %}} selected {% endif %}>Student Govt./Politics</option>
+              <option value="Theater/Drama" {% if ca_activity.activity_type == 'Theater/Drama' %}} selected {% endif %}>Theater/Drama</option>
+              <option value="Work (Paid)" {% if ca_activity.activity_type == 'Work (Paid)' %}} selected {% endif %}>Work (Paid)</option>
+              <option value="Other Club/Activity" {% if ca_activity.activity_type == 'Other Club/Activity' %}} selected {% endif %}>Other Club/Activity</option>
+            </select>  
+          </div>
+
+          <div class="form-group">
+            <label for="position" class="form-label">Position:</label>          
+            <textarea
+            type="text"
+            class="form-control"
+            id="position"
+            name="position"
+            style="resize:none; height:38px"
+            autocomplete="off"                        
+          >{{ca_activity.position}}</textarea>
+          
+            <div id="the-count" style="text-align:right">
+              {% if ca_activity.position|length>50 %}
+                <span class="current" style="color:red">
+              {%else%} 
+                <span class="current">
+              {%endif%}
+
+              {{ca_activity.position|length}}
+              
+              </span>
+              / 
+              <span class="maximum">50</span>
+            </div>
+          </div>
+
+          <div class="form-group" >
+            <label for="organization" class="form-label">Organization Name:</label>
+
+            <textarea
+              type="text"
+              class="form-control"
+              id="organization"
+              name="organization"
+              style="resize:none; height:38px"
+              autocomplete="off"                        
+            >{{ca_activity.organization}}</textarea>
+
+            <div id="the-count" style="text-align:right">
+              {% if ca_activity.organization|length>100 %}
+                <span class="current" style="color:red">
+              {%else%} 
+                <span class="current">
+              {%endif%}
+              {{ca_activity.organization|length}}
+              </span>
+              / 
+              <span class="maximum">100</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label">Description:</label>
+            <textarea
+              type="text"
+              class="form-control"
+              id="description"
+              name="description"
+              style="resize:none; height:114px"
+              autocomplete="off"                        
+            >{{ca_activity.description}}</textarea>
+            <div id="the-count" style="text-align:right">
+              {% if ca_activity.description|length>150 %}
+                <span class="current" style="color:red">
+              {%else%} 
+                <span class="current">
+              {%endif%}
+              {{ca_activity.description|length}}
+              </span>/<span class="maximum">150</span>
+            </div>
+          </div>
+                  
+          Participation Grade Levels:
+
+          <label class="container">
+            <input type="checkbox"> 9th
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">
+            <input type="checkbox"> 10th
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">
+            <input type="checkbox"> 11th
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">
+            <input type="checkbox"> 12th
+            <span class="checkmark"></span>
+          </label> 
+
+          <label class="container">
+            <input type="checkbox"> Post-graduate
+            <span class="checkmark"></span>
+          </label> 
+
+
+          <input type="hidden" id="action" name="action" value="update" />
+        
+        </div>
+
+        <input type="hidden" id="activityId" name="activityId" value="{{ca_activity.id}}" />
+
+        <div style="text-align:right" class="save-button-group">
+          <button type="button" class="btn btn-danger" onClick="deleteCAActivity(parseInt('{{ ca_activity.id }}'))">Delete Activity</button>
+          <button type="submit" class="btn btn-secondary save-button">Save Activity</button>
+        </div>        
+ 
+      </form>
+    </div>
+
+  {% endfor %}
+
+<div class="activity-form" style="background-color:rgb(172, 170, 170)">
+    <form method="POST">
+
+    <div style="text-align: center">
+      <div class="activity-title"> Add New Activity </div>
+    </div>  
+
+    <div class="form-group">
+      <label for="activity_type" class="form-label">Activity Type:</label><br/>
+      <select class="form-select" id="activity_type" name="activity_type">
+
+        <option value="Choose an option" hidden>Choose an option</option>
+
+        <option value="Art">Art</option>
+        <option value="Athletics: Club">Athletics: Club</option>
+        <option value="Athletics: JV/Varsity">Athletics: JV/Varsity</option>
+        <option value="Career Oriented">Career Oriented</option>
+        <option value="Community Service (Volunteer)">Community Service (Volunteer)</option>
+        <option value="Computer/Technology">Computer/Technology</option>
+        <option value="Cultural">Cultural</option>
+        <option value="Dance">Dance</option>
+        <option value="Debate/Speech">Debate/Speech</option>
+        <option value="Family Responsibilities">Family Responsibilities</option>
+        <option value="Foreign Exchange">Foreign Exchange</option>
+        <option value="Foreign Language">Foreign Language</option>
+        <option value="Internship">Internship</option>
+        <option value="Journalism/Publication" >Journalism/Publication</option>
+        <option value="Junior R.O.T.C.">Junior R.O.T.C.</option>
+        <option value="LGBT">LGBT</option>
+        <option value="Music: Instrumental">Music: Instrumental</option>
+        <option value="Music: Vocal">Music: Vocal</option>
+        <option value="Religious">Religious</option>
+        <option value="Research">Research</option>
+        <option value="Robotics">Robotics</option>
+        <option value="School Spirit">School Spirit</option>
+        <option value="Science/Math">Science/Math</option>
+        <option value="Social Justice">Social Justice</option>
+        <option value="Student Govt./Politics">Student Govt./Politics</option>
+        <option value="Theater/Drama">Theater/Drama</option>
+        <option value="Work (Paid)">Work (Paid)</option>
+        <option value="Other Club/Activity">Other Club/Activity</option>
+      </select>  
+    </div>
+
+    <div class="form-group" >
+      <label for="position" class="form-label">Position:</label>
+      <textarea
+        type="text"
+        class="form-control"
+        id="position"
+        name="position"
+        style="resize:none; height:38px"
+        autocomplete="off"                        
+      ></textarea>
+      <div id="the-count" style="text-align:right">
+        <span class="current">0</span>
+        / 
+        <span class="maximum">50</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="organization" class="form-label">Organization Name:</label>
+      <textarea
+        type="text"
+        class="form-control"
+        id="organization"
+        name="organization"
+        style="resize:none; height:38px"
+        autocomplete="off"                        
+      ></textarea>
+      <div id="the-count" style="text-align:right">
+        <span class="current">0</span>
+        / 
+        <span class="maximum">100</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description" class="form-label">Description:</label>      
+      <textarea
+      type="text"
+      class="form-control"
+      id="description"
+      name="description"
+      style="resize:none; height:114px"
+      autocomplete="off"                        
+    ></textarea>
+      <div id="the-count" style="text-align:right">
+        <span class="current">0</span>
+        / 
+        <span class="maximum">150</span>
+      </div>
+    </div>
+
+    <input 
+    type="hidden"
+    id="action"
+    name="action" 
+    value="addnew" />
+
+    <div style="text-align:right;">
+      <button type="submit" class="btn btn-primary .save-button" >Add Activity</button>
+    </div>
+  </form>
+</div>
+
+<br/><br/>
+
+
+<script 
+src="https://code.jquery.com/jquery-3.5.1.js" 
+integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+crossorigin="anonymous">
+</script>
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='activities.js') }}"
+></script>
+
+
+
+
+
+{% endblock %}
