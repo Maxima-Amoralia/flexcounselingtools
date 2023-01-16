@@ -63,7 +63,7 @@ def login():
 """
 
     
-
+"""
 
 @auth.route("/login/callback")
 def callback():
@@ -126,6 +126,7 @@ def callback():
     # Send user back to homepage
 
     return render_template('home.html', user=current_user)
+"""
 
 @auth.route('/logout')
 @login_required
