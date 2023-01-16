@@ -35,7 +35,7 @@ def login():
 
     request_uri = client.prepare_request_uri(
         authorization_endpoint,
-        redirect_uri="https://www.flexcounselingtools.com/login/callback",
+        redirect_uri="https://127.0.0.1:5000/login/callback",
         scope=["openid", "email", "profile"],
     )
     return redirect(request_uri)
