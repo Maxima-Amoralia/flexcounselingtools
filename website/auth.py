@@ -17,9 +17,12 @@ GOOGLE_DISCOVERY_URL = (
 
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
-
-
 auth = Blueprint('auth', __name__)
+
+def get_google_provider_cfg():
+    return requests.get(GOOGLE_DISCOVERY_URL).json()
+
+
 
 
 @auth.route('/login', methods=['GET', 'POST'])
