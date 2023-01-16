@@ -4,6 +4,20 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 
+import os
+import requests
+import json
+from oauthlib.oauth2 import WebApplicationClient
+
+GOOGLE_CLIENT_ID = os.environ['GOOGLE_CLIENT_ID']
+GOOGLE_CLIENT_SECRET = os.environ['GOOGLE_CLIENT_SECRET']
+GOOGLE_DISCOVERY_URL = (
+    "https://accounts.google.com/.well-known/openid-configuration"
+)
+
+client = WebApplicationClient(GOOGLE_CLIENT_ID)
+
+
 
 auth = Blueprint('auth', __name__)
 
