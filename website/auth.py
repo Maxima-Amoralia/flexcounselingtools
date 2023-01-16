@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session, current_app
+from flask import Blueprint, render_template, request, flash, redirect, url_for, session, current_app
 from .models import User
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -27,18 +27,20 @@ def get_google_provider_cfg():
 
 @auth.route('/login')
 def login():
+   return redirect('test.html')
+
     # Find out what URL to hit for Google login
-    google_provider_cfg = get_google_provider_cfg()
-    authorization_endpoint = google_provider_cfg["authorization_endpoint"]
+#    google_provider_cfg = get_google_provider_cfg()
+#    authorization_endpoint = google_provider_cfg["authorization_endpoint"]
 
     # Use library to construct the request for Google login and provide
     # scopes that let you retrieve user's profile from Google
-    request_uri = client.prepare_request_uri(
-        authorization_endpoint,
-        redirect_uri="https://127.0.0.1:5000/login/callback",
-        scope=["openid", "email", "profile"],
-    )
-    return redirect(request_uri)
+#    request_uri = client.prepare_request_uri(
+#        authorization_endpoint,
+#        redirect_uri="https://127.0.0.1:5000/login/callback",
+#        scope=["openid", "email", "profile"],
+#    )
+ #   return redirect(request_uri)
 
 @auth.route("/login/callback")
 def callback():
