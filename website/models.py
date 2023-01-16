@@ -11,9 +11,6 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(150))
     full_name = db.Column(db.String(150))
 
-
-
-
     note = db.relationship('Note')
     ca_activity = db.relationship('CA_Activity')
 
