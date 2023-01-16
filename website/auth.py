@@ -27,24 +27,6 @@ def get_google_provider_cfg():
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-
-    # Find out what URL to hit for Google login
-     
-    google_provider_cfg = get_google_provider_cfg()
-    authorization_endpoint = google_provider_cfg["authorization_endpoint"]
-
-    # Use library to construct the request for Google login and provide
-    # scopes that let you retrieve user's profile from Google
-
-    request_uri = client.prepare_request_uri(
-        authorization_endpoint,
-        redirect_uri="https://127.0.0.1:5000/login/callback",
-        scope=["openid", "email", "profile"],
-    )
-    return redirect(request_uri)
-
-
-"""
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -62,7 +44,26 @@ def login():
 
     return render_template("login.html", user=current_user)
 
+
 """
+    # Find out what URL to hit for Google login
+     
+    google_provider_cfg = get_google_provider_cfg()
+    authorization_endpoint = google_provider_cfg["authorization_endpoint"]
+
+    # Use library to construct the request for Google login and provide
+    # scopes that let you retrieve user's profile from Google
+
+    request_uri = client.prepare_request_uri(
+        authorization_endpoint,
+        redirect_uri="https://127.0.0.1:5000/login/callback",
+        scope=["openid", "email", "profile"],
+    )
+    return redirect(request_uri)
+"""
+
+    
+
 
 @auth.route("/login/callback")
 def callback():
