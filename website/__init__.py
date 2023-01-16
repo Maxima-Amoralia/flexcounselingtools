@@ -7,6 +7,10 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
+os.environ['SECRET_KEY'] = 'cokeoriginaltaste'
+os.environ['GOOGLE_CLIENT_ID'] = '646560245315-bodcvrrsacfq27u1babt7s17jt7i5fma.apps.googleusercontent.com'
+os.environ['GOOGLE_CLIENT_SECRET'] = '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'
+
 
 def create_app():
     app = Flask(__name__)
@@ -31,7 +35,7 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(id):
-        return User.query.get(int(id))
+        return User.query.get(id)
         
     return app
 
