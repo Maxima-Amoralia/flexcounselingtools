@@ -3,13 +3,20 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
 
+import os
+
+
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
+
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'cokeoriginaltaste'
+
+    app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY") or os.urandom(24)
+
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+
     db.init_app(app)
 
     from .views import views    
@@ -28,8 +35,8 @@ def create_app():
     login_manager.init_app(app)
 
     @login_manager.user_loader
-    def load_user(id):
-        return User.query.get(int(id))
+    def load_user(user_id):
+        return User.query.get(user_id)
         
     return app
 
