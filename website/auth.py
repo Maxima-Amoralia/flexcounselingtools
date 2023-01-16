@@ -112,4 +112,4 @@ def logout():
         headers={"Content-Type": "application/x-www-form-urlencoded"}
     )
     logout_user() 
-    return render_template('test.html')
+    return render_template('logout.html')

@@ -31,31 +31,12 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: fixed; width: 100%; z-index:100">
       
       <div class="" id="navbar">
-        <div class="navbar-nav">
-          {% if user.is_authenticated %}          
+        <div class="navbar-nav">          
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-          {% else %}
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
-          <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
-          {% endif %}
         </div>
       </div>
     </nav>
 
-
-    <!--
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %} {% if category ==
-    'error' %}
-    <div class="alert alert-danger alter-dismissable fade show" style="margin-top:40px" role="alert">
-      {{ message }}
-    </div>
-    {% else %}
-    <div class="alert alert-success alter-dismissable fade show" style="margin-top:40px" role="alert">
-      {{ message }}      
-    </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
-    -->
 
     
     <div style="height:100%; width: 100%; position: relative; min-width:800px; top: 80px;">
@@ -73,13 +54,10 @@
           <nav class="navbar bg-dark">
             <ul class="nav navbar-nav">
               <li class="active"><a href="/" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Home</div></a></li>
-              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Profile</div></a></li>
               <li class="active"><a href="/activities" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Activities</div></a></li>
-              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Resume</div></a></li>
-              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Anecdotes</div></a></li>
-              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">College List</div></a></li>
-              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Essays</div></a></li>
-              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Results</div></a></li>
+              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Summer Program Database</div></a></li>
+              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Volunteering Database</div></a></li>
+              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">College Lists</div></a></li>
             </ul>
           </nav>
 
