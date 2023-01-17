@@ -1,28 +1,35 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker 
+
 import os
 
 from flask_login import LoginManager
 
+#userdb = create_engine('sqlite:///relative/path/to/userdb.db')
+#userDBSession = sessionmaker(userdb)
+#userdbSession = userDBSession()
+
+
 db = SQLAlchemy()
 DB_NAME = "database.db"
-
-os.environ['SECRET_KEY'] = 'cokeoriginaltaste'
-os.environ['GOOGLE_CLIENT_ID'] = '646560245315-bodcvrrsacfq27u1babt7s17jt7i5fma.apps.googleusercontent.com'
-os.environ['GOOGLE_CLIENT_SECRET'] = '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'
 
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
+    app.config['SECRET_KEY'] = "os.environ['SECRET_KEY']"
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
     from .views import views    
     from .auth import auth
+    from .spidatabase import spidatabase
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(spidatabase, url_prefix='/')
 
     from .models import User, Note, CA_Activity
 

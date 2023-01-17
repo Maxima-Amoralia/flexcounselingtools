@@ -22,7 +22,7 @@ def home():
 
     return render_template("home.html", user=current_user)
 
-
+##########################################################################################
 
 @views.route('/dactivities', methods=['GET', 'POST'])
 @login_required
@@ -55,6 +55,7 @@ def dactivities():
 
     return render_template("activities.html", user=current_user)
 
+##########################################################################################
 
 @views.route('/activities', methods=['GET', 'POST'])
 @login_required
@@ -95,8 +96,7 @@ def activities():
 
     return render_template("activities.html", user=current_user)
 
-
-
+##########################################################################################
 
 @views.route('delete-note', methods=['POST'])
 def delete_note():
@@ -109,6 +109,8 @@ def delete_note():
             db.session.commit()
     return jsonify({})
 
+##########################################################################################
+
 @views.route('delete-ca_activity', methods=['POST'])
 def save_ca_activity():
     activity = json.loads(request.data)
@@ -120,10 +122,4 @@ def save_ca_activity():
             db.session.commit()
     return jsonify({})
 
-@views.route("/test", methods=["POST","GET"])
-@login_required
-def test():
-    if request.method == "POST":
-        todo = request.form.get("todo")
-        print(todo)
-    return render_template('test.html')
+##########################################################################################
