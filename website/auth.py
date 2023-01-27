@@ -65,12 +65,8 @@ def callback():
         auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
     )
 
-    # Parse the tokens!
     client.parse_request_body_response(json.dumps(token_response.json()))
 
-    # Now that you have tokens (yay) let's find and hit the URL
-    # from Google that gives you the user's profile information,
-    # including their Google profile image and email
     userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
     uri, headers, body = client.add_token(userinfo_endpoint)
     userinfo_response = requests.get(uri, headers=headers, data=body)
@@ -85,7 +81,7 @@ def callback():
     else:
         return "User email not available or not verified by Google.", 400
 
-    # Create a user in your db with the information provided    
+  
 
     user = User.query.filter_by(id=unique_id).first()
 
@@ -98,7 +94,7 @@ def callback():
     else:
         login_user(user, remember=True)
         
-    # Send user back to homepage
+
     return render_template('home.html', user=current_user)
 
 

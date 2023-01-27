@@ -5,14 +5,9 @@ import os
 
 from flask_login import LoginManager
 
-#userdb = create_engine('sqlite:///relative/path/to/userdb.db')
-#userDBSession = sessionmaker(userdb)
-#userdbSession = userDBSession()
-
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
-
 
 def create_app():
     app = Flask(__name__)
