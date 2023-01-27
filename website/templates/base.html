@@ -28,13 +28,10 @@
   
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: fixed; width: 100%; z-index:100">
-      
-      <div class="" id="navbar">
-        <div class="navbar-nav">          
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-        </div>
-      </div>
+    <nav class="navbar" style="position: fixed; width: 100%; z-index:100;background-color: #6787b7; color: whitesmoke; font-weight:bold">          
+      <div class="navbar-nav">          
+        <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+      </div>    
     </nav>
 
 
@@ -44,23 +41,44 @@
       <div class="row-offcanvas row-offcanvas-left"">
         
         <div id="sidebar" class="sidebar-offcanvas">
-          <p class="visible-xs" style="text-align:right">
-            <button type="button" class="btn btn-sm btn-collapse" data-toggle="offcanvas">
-              <i class="fa fa-angle-double-left" style="color:rgb(220, 220, 220)"></i>
-            </button>
-          </p>
-          <div style="margin-top:-22px"></div>  
 
-          <nav class="navbar bg-dark">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="/" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Home</div></a></li>
-              <li class="active"><a href="/activities" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Activities</div></a></li>
-              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Summer Program Database</div></a></li>
-              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Volunteering Database</div></a></li>
-              <li class="active"><a href="#" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">College Lists</div></a></li>
-              <li class="active"><a href="/spidatabase" style="color: whitesmoke"><div style="width: 212px; background-color:grey; text-align: center; margin-left:-16px">Test</div></a></li>
-            </ul>
-          </nav>
+
+          <div style="border-radius: 10px; overflow: hidden; background-color: #6787b7">
+            <nav class="navbar">              
+                <a href="/" class="sidebar-link"><div class="sidebar-item">Home</div></a></li>            
+            </nav>
+          </div>
+              
+          
+          <div style="border-radius:10px; margin-top: 20px; overflow: hidden; background-color: #6787b7">
+
+            <div style="color: whitesmoke; text-align: center; font-weight: bold; margin-top: 5px; margin-bottom: -7px">Databases</div>
+              
+            <nav class="navbar">
+              
+              <a href="#" class="sidebar-link"><div class="sidebar-item">Summer Programs</div></a>
+              <a href="#" class="sidebar-link"><div class="sidebar-item">Community Service</div></a>
+              <a href="#" class="sidebar-link"><div class="sidebar-item">Internship Programs</div></a>
+              
+            </nav>
+          </div>
+
+
+          <div style="border-radius: 10px; margin-top: 20px; overflow: hidden; background-color: #6787b7">
+            <div style="color: whitesmoke; text-align: center; font-weight: bold; margin-top: 5px; margin-bottom: -7px">Data</div>
+            <nav class="navbar">              
+                <a href="#" class="sidebar-link"><div class="sidebar-item">College Lists</div></a></li>
+                <a href="/resultsdata" class="sidebar-link"><div class="sidebar-item">Results</div></a></li>              
+            </nav>
+          </div>
+
+          <div style="border-radius: 10px; margin-top: 20px; overflow: hidden; background-color: #6787b7">
+            <div style="color: whitesmoke; text-align: center; font-weight: bold; margin-top: 5px; margin-bottom: -7px">Prototypes</div>
+            <nav class="navbar">              
+                <a href="/activities" class="sidebar-link"><div class="sidebar-item">Activities Listings</div></a></li>              
+            </nav>
+          </div>
+
 
         </div>  
       </div>

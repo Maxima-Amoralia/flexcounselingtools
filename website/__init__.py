@@ -1,9 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker 
-
 import os
 
 from flask_login import LoginManager
@@ -21,15 +18,20 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "os.environ['SECRET_KEY']"
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_BINDS'] = {'spiDatabase' : f'sqlite:///spidatabase.db',
+                                      'volunteerDatabase' : f'sqlite:///volunteerdatabase.db',
+                                      'chancingData' : f'sqlite:///chancingdata.db',
+                                      'admitData' : f'sqlite:///admitdata.db'}
+
     db.init_app(app)
 
     from .views import views    
     from .auth import auth
-    from .spidatabase import spidatabase
+    from .resultsdata import resultsdata
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
-    app.register_blueprint(spidatabase, url_prefix='/')
+    app.register_blueprint(resultsdata, url_prefix='/')
 
     from .models import User, Note, CA_Activity
 

@@ -3,13 +3,15 @@ from flask_login import login_required, current_user
 from .models import Note, CA_Activity
 from . import db
 import json
+from .models import StudentData
 
-spidatabase = Blueprint('spidatabase', __name__)
+
+resultsdata = Blueprint('resultsdata', __name__)
 
 
-@spidatabase.route("/spidatabase", methods=["POST","GET"])
+@resultsdata.route("/resultsdata", methods=["POST","GET"])
 @login_required
-def test():
+def results():
 
     #from __future__ import print_function
 
@@ -109,26 +111,32 @@ def test():
             tot_avg_ap = tot_avg_ap + float(x[avg_ap_scoreCol])
             print(x)
 
+    for x in values:
+        student = StudentData.query.filter_by(student_id=x[0])
+
+
+        if not student:
+            new_student = StudentData(student_id=x[0], last_name=x[1], first_name=x[2], high_school=x[3], major=x[4], gpa_uw=x[gpa_uwCol], gpa_w=x[gpa_wCol], 
+                                        num_ap = x[num_apCol], num_ib=x[num_ibCol], num_hon=x[num_honCol], num_weighted=x[num_weightedCol], highest_test=x[highest_testCol],
+                                        num_ap_exams=x[num_ap_examsCol], avg_ap_score=x[avg_ap_scoreCol], berkeley=x[berkeleyCol], davis=x[davisCol], irvine=x[irvineCol],
+                                        los_angeles=x[los_angelesCol], merced=x[mercedCol], riverside=x[riversideCol], san_diego=x[san_diegoCol], santa_barbara=x[santa_barbaraCol],
+                                        santa_cruz=x[santa_cruzCol])
+            db.session.add(new_student)
+            db.session.commit()
+
+
+    berkeleyAdmits = StudentData.query.filter_by(berkeley="TRUE", los_angeles="TRUE")
+
+    studentCount=0
+    for x in berkeleyAdmits:
+        print(x.first_name)
+        studentCount=studentCount+1;
+    print(studentCount)
+
     print(index)
     print ('Average Unweighted GPA: ' + str(tot_gpa_uw/index))
     print ('Average Weighted GPA: '+ str(tot_gpa_w/index))
     print ('Total Weighted Courses: ' + str(tot_weighted/index))
     print('Average AP Score: ' + str(tot_avg_ap/index))
 
-
-    import numpy as np
-    import matplotlib
-    from matplotlib import pyplot as plt
-
-    ys = 200 + np.random.randn(100)
-    x = [x for x in range(len(ys))]
-
-    plt.plot(x, ys, '-')
-    plt.fill_between(x, ys, 195, where=(ys > 195), facecolor='g', alpha=0.6)
-
-    plt.title("Sample Visualization")
-    plt.show()
-    # sheet.values()
-
-    return render_template('test.html')
-
+    return render_template("resultsdata.html")

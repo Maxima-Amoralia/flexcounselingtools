@@ -64,6 +64,8 @@ def activities():
 
         action = request.form.get('action')
         
+        print('saving1')
+
         if action == 'addnew':
 
             activity_type = request.form.get('activity_type')
@@ -75,7 +77,11 @@ def activities():
             db.session.add(new_ca_activity)
             db.session.commit()
 
+            print('saving new')
+
         else: 
+
+            print('updating')
             activity = json.loads(request.data)
 
             activity_type = activity['activity_type']
@@ -87,12 +93,16 @@ def activities():
             activity = CA_Activity.query.get(activityId)
                 
             if activity:
+                print('activity found')
+                print(int(activity.user_id))
+                print(int(current_user.id))
                 if activity.user_id == current_user.id:
                     activity.activity_type = activity_type
                     activity.position = position
                     activity.organization = organization
                     activity.description = description
                     db.session.commit()
+                    print('activity updated?')
 
     return render_template("activities.html", user=current_user)
 

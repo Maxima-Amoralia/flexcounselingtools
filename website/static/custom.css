@@ -4,34 +4,47 @@ html, body{
   padding: 0;
 }
 
-.row-offcanvas {
-  height:100%;
-}
-  
 #sidebar {
   width: 220px;  
-  background-color: #343a40;
+  margin-left: 20px;
+  background-color: transparent;
   position:relative;
   overflow-y:auto;
   overflow-x:hidden;
   position:fixed;
   float:left;
-
-  border-bottom-right-radius:5px;
-  border-top-right-radius:5px;
 }
 
+.sidebar-item {
+  width: 209px;
+  background-color:transparent;
+  text-align: center;
+  margin-left:-11px;
+}
+
+.sidebar-item:hover {
+  border-radius: 5px;
+  background-color: #D1DDE6;  
+  overflow:hidden;
+}
+
+.sidebar-link {
+  color: whitesmoke
+}
+
+.sidebar-link:hover {
+  text-decoration: none;
+}
+
+
 .main-content{  
-  width: -webkit-calc(100% - 220px);
-  width:    -moz-calc(100% - 220px);
-  width:         calc(100% - 220px);   
+  width: -webkit-calc(100% - 240px);
+  width:    -moz-calc(100% - 240px);
+  width:         calc(100% - 240px);   
   padding-left: 40px;
   padding-right: 40px;
   position: relative;
   float:right;
-  -webkit-transition: all 0.25s ease-out;
-  -moz-transition: all 0.25s ease-out;
-  transition: all 0.25s ease-out;
 }
 
 .main-content.active{ 
@@ -57,32 +70,6 @@ html, body{
 }
 
 
-/*
-   * off Canvas sidebar
-   * --------------------------------------------------
-   */
-
-@media screen {
-  .row-offcanvas {
-    position:relative;
-    float:left;
-    -webkit-transition: all 0.25s ease-out;
-    -moz-transition: all 0.25s ease-out;
-    transition: all 0.25s ease-out;
-  }
-    
-  .row-offcanvas-left
-  {
-    left: 0px;
-  }
-
-  .row-offcanvas-left.active {
-    position: fixed;
-    left: -200px;
-  }
-
-}
-
 .activity-title{
     font-weight:600;
     font-size:24px;
@@ -107,7 +94,7 @@ html, body{
 
 .activity-form {
     background-color:rgb(215, 215, 215);
-    border-radius:20px;
+    border-radius:10px;
     padding:15px;
     position: relative
 }
