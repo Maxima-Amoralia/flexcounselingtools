@@ -32,7 +32,6 @@ $('textarea').keyup(function() {
     theCount.css('font-weight','normal');
   } 
 
-  
   $(this).parents('#activity-form').find('.save-button').css('background-color', '#007bff');
   
 });
@@ -52,6 +51,7 @@ $('.reorder-button-down').click(function() {
   saveData($(this).parents('#activity-form').parent().nextAll().eq(0).find('#activity-form'));  
 })
 
+
 $('.reorder-button-up').click(function() {
   b = $(this).parents('#activity-form').find('.form-contents');
   a = $(this).parents('#activity-form').parent().prevAll().eq(0).find('.form-contents');
@@ -67,9 +67,6 @@ $('.reorder-button-up').click(function() {
   saveData($(this).parents('#activity-form').parent().prevAll().eq(0).find('#activity-form'));  
 })
 
-
-
-
 function saveData (inputForm) {
   
   var unindexed_array = inputForm.serializeArray();
@@ -79,6 +76,7 @@ function saveData (inputForm) {
       indexed_array[n['name']] = n['value'];
   });
     
+
   if(indexed_array['action'] == 'update') {    
     data = JSON.stringify(indexed_array);
     fetch('/activities', {
@@ -99,9 +97,13 @@ $('form').on( 'submit', function(e) {
       indexed_array[n['name']] = n['value'];
   });
 
+  temp = JSON.stringify(indexed_array)
+  alert(temp)
+
   if(indexed_array['action'] == 'update') {
     e.preventDefault();
     data = JSON.stringify(indexed_array);
+
     fetch('/activities', {
       method: "POST",    
       body: data

@@ -9,6 +9,10 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
+os.environ['GOOGLE_CLIENT_ID'] = '646560245315-bodcvrrsacfq27u1babt7s17jt7i5fma.apps.googleusercontent.com'
+os.environ['GOOGLE_CLIENT_SECRET'] = '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'
+os.environ['SECRET_KEY'] = 'cokeoriginaltaste'
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "os.environ['SECRET_KEY']"

@@ -28,13 +28,13 @@ def home():
 @login_required
 def dactivities():
     
+    
+
     if request.method == 'POST':
         activity_type = request.form.get('activity_type')
         position = request.form.get('position')
         organization = request.form.get('organization')
         description = request.form.get('description')
-
-        print(request.data)
 
         if request.form.get('action') == 'update':
             activityId = request.form.get('activityId')
@@ -60,14 +60,14 @@ def dactivities():
 @views.route('/activities', methods=['GET', 'POST'])
 @login_required
 def activities():
-    if request.method == 'POST':
 
+    if request.method == 'POST':
+    
         action = request.form.get('action')
-        
-        print('saving1')
+
+        print(request.form)
 
         if action == 'addnew':
-
             activity_type = request.form.get('activity_type')
             position = request.form.get('position')
             organization = request.form.get('organization')
@@ -77,11 +77,7 @@ def activities():
             db.session.add(new_ca_activity)
             db.session.commit()
 
-            print('saving new')
-
         else: 
-
-            print('updating')
             activity = json.loads(request.data)
 
             activity_type = activity['activity_type']
@@ -93,16 +89,12 @@ def activities():
             activity = CA_Activity.query.get(activityId)
                 
             if activity:
-                print('activity found')
-                print(int(activity.user_id))
-                print(int(current_user.id))
                 if activity.user_id == current_user.id:
                     activity.activity_type = activity_type
                     activity.position = position
                     activity.organization = organization
                     activity.description = description
                     db.session.commit()
-                    print('activity updated?')
 
     return render_template("activities.html", user=current_user)
 

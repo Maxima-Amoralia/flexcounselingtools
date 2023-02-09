@@ -4,37 +4,152 @@
 
 {% block content %}
 
-  <div style="width: 800px; float: center">
+<div style="width:100%">
+  <div style="width: 800px; float: center; margin: auto">
     <canvas id="myChart"></canvas>
   </div>
+</div>
+
+
+  <div class="results-form" style="margin-bottom:0px; background-color: #F1F1F1; padding: 10px; border-radius: 10px; font-weight: bold">
+    <form method="POST" id="results-form">
+      <div style="position:relative; width:100%; margin-bottom: 0px;">
+        <div style="font-weight:bold; text-align: center">
+          X-Axis:
+          <select id="x-axis" name="x-axis" style="height:24px; font-size: small;">
+            <option value="null" hidden>Choose an option</option>
+            <option value="gpa_uw">GPA Unweighted</option>
+            <option value="gpa_w">GPA Weighted</option>
+            <option value="num_ap">Number of AP Courses</option>
+            <option value="num_hon">Number of Honors Courses</option>      
+            <option value="num_weighted">Number of Weighted Courses</option>
+            <option value="highest_test">Highest Test Score</option>
+            <option value="num_ap_exams">Number of AP Exams</option>
+            <option value="avg_ap_score">Average AP Score</option>
+          </select>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          Y-Axis:
+          <select id="y-axis" name="y-axis" style="height:24px; font-size: small;">
+            <option value="null" hidden>Choose an option</option>
+            <option value="gpa_uw">GPA Unweighted</option>
+            <option value="gpa_w">GPA Weighted</option>
+            <option value="num_ap">Number of AP Courses</option>
+            <option value="num_hon">Number of Honors Courses</option>
+            <option value="num_weighted">Number of Weighted Courses</option>      
+            <option value="highest_test">Highest Test Score</option>
+            <option value="num_ap_exams">Number of AP Exams</option>
+            <option value="avg_ap_score">Average AP Score</option>
+          </select>
+        </div>
+      </div>
+    </form>
   
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    Data Sets:
+    <form method="POST" id="data-form">
+      <div style="position:relative; width:100%">
+        <div>
+          College: 
+          <select id="college" name="college" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;">
+            <option value="any">Any</option>
+            <option value="berkeley">UC Berkeley</option>
+            <option value="davis">UC Davis</option>
+            <option value="irvine">UC Irvine</option>
+            <option value="los_angeles">UC Los Angeles</option>      
+            <option value="merced">UC Merced</option>
+            <option value="riverside">UC Riverside</option>
+            <option value="san_diego">UC San Diego</option>
+            <option value="santa_barbara">UC Santa Barbara</option>
+            <option value="santa_cruz">UC Santa Cruz</option>
+          </select>
+        </div>
+        <div>
+          High School:
+          <select id="high_school" name="high_school" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;">
+            <option value="any">Any</option>
+          </select>
+        </div>
+        <div>
+          Major (General):
+          <select id="major_gen" name="major_gen" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;">
+            <option value="null">Any</option>
+            <option value="Business">Business</option>
+            <option value="CS/Eng">CS/Engineering</option>
+            <option value="Humanities">Humanities</option>      
+            <option value="Natural Science">Natural Science</option>
+            <option value="Social Science">Social Science</option>
+            <option value="Undeclared">Undeclared</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div>
+          Major:
+          <select id="major" name="major" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;">
+            <option value="null" hidden>Choose an option</option>
+          </select>
+        </div>
+        <div>
+        Color: 
+          <select id="color" name="color" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;">
+            <option value="0">Red</option>
+            <option value="1">Orange</option>
+            <option value="2">Yellow</option>
+            <option value="3">Green</option>
+            <option value="4">Blue</option>
+            <option value="5">Purple</option>      
+            <option value="6">Grey</option>
+            <option value="7">Black</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-secondary">Add Data Set</button>
+        <button type="button" class="btn btn-secondary" onclick="clearData()">Clear Data</button>
+    </div>
+     
+    </form>
+
+  </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
-  <script>
-    const ctx = document.getElementById('myChart');
+
+<script>
+  const ctx = document.getElementById('myChart'); 
   
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
+  var datachart = new Chart(ctx, 
+    { 
+      type: 'scatter', 
+      options:{
         scales: {
           y: {
-            beginAtZero: false
-          }
+            beginAtZero: false,
+            title: {
+              display: true,
+              text:''
+            }
+          },
+          x: {
+            beginAtZero: false,
+            title: {
+              display: true,
+              text:''
+            }          
+          },
         }
       }
     });
-  </script>
-  
-   
-  
-   
+
+</script>
+
+<script 
+src="https://code.jquery.com/jquery-3.5.1.js" 
+integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+crossorigin="anonymous">
+</script>
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='resultsdata.js') }}"
+></script>
 
 {% endblock %}

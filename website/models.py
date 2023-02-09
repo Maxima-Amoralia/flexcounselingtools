@@ -50,6 +50,7 @@ class StudentData(db.Model):
     last_name = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     high_school = db.Column(db.String(150))
+    major_gen = db.Column(db.String(150))
     major = db.Column(db.String(150))
     gpa_uw = db.Column(db.Integer)
     gpa_w = db.Column(db.Integer)

@@ -1,28 +1,3 @@
-/*
-$('textarea').keyup(function() {
-    
-    var characterCount = $(this).val().length,
-        current = $(this).parent().children('div').children('.current');
-        maximum = $(this).parent().children('div').children('.maximum');
-        theCount = $('#the-count');
-      
-    current.text(characterCount);
-   
-    
-    if (characterCount <= maximum.text()) {
-      current.css('color', '#666');
-    }
-    if (characterCount > maximum.text()) {
-      current.css('color', '#FF0000');
-      theCount.css('font-weight','normal');
-    } else {
-      maximum.css('color','#666');
-      theCount.css('font-weight','normal');
-    }
-          
-  });
-*/
-
 
 $(document).ready(function() {
   $('[data-toggle=offcanvas]').click(function() {
