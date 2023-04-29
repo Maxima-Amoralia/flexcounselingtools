@@ -247,16 +247,15 @@ document.getElementById("addCollegeButton").addEventListener('click', function t
   })
 })
 
-document.getElementById("addCollege").addEventListener('change', function test() {
+
+$("#addCollege").on('change', function test() {
 
   var studentId = document.getElementById("chance_student").value;
   var gpaWeighted = document.getElementById("gpa_w").innerHTML;
   var ecaRating = document.getElementById("eca_rating").value;
   var majorGroup = document.getElementById("major_group").innerHTML;
   var collegeName = document.getElementById("addCollege").value;
-
-  alert(studentId)
-
+    
   var chanceData = {
     'student_id': studentId, 
     'college_name': collegeName, 
@@ -273,7 +272,6 @@ document.getElementById("addCollege").addEventListener('change', function test()
   }).then(response=>response.text()).then(input=>{
 
     input = JSON.parse(input);
-    alert(input['ml_chancing'])
     document.getElementById("new_ml_chancing").innerHTML=input['ml_chancing']    
 
   })
