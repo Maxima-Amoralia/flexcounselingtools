@@ -1,5 +1,36 @@
 
 
+$("#addCollege").on('change', function test() {
+
+  var studentId = document.getElementById("chance_student").value;
+  var gpaWeighted = document.getElementById("gpa_w").innerHTML;
+  var ecaRating = document.getElementById("eca_rating").value;
+  var majorGroup = document.getElementById("major_group").innerHTML;
+  var collegeName = document.getElementById("addCollege").value;
+    
+  var chanceData = {
+    'student_id': studentId, 
+    'college_name': collegeName, 
+    'gpa_weighted': gpaWeighted,
+    'eca_rating': ecaRating,
+    'major_group': majorGroup
+  }
+
+  var chanceData = JSON.stringify(chanceData)
+
+  fetch('/committee_chancing/quick_ml_chancing', {
+    method: "POST",    
+    body: chanceData    
+  }).then(response=>response.text()).then(input=>{
+
+    input = JSON.parse(input);
+    $('#new_ml_chancing').html(input['ml_chancing']);
+
+  })
+
+})
+
+
 document.getElementById("chance_student").addEventListener('change', function test() {
 
     var studentId = document.getElementById("chance_student").value;
@@ -153,7 +184,7 @@ document.getElementById("submit_button").addEventListener('click', function test
 })
 
 
-document.getElementById("addCollegeButton").addEventListener('click', function test() {
+$("#addCollegeButton").on('click', function test() {
   
   var studentId = document.getElementById("chance_student").value;
   var collegeName = document.getElementById("addCollege").value;
@@ -247,33 +278,3 @@ document.getElementById("addCollegeButton").addEventListener('click', function t
   })
 })
 
-
-$("#addCollege").on('change', function test() {
-
-  var studentId = document.getElementById("chance_student").value;
-  var gpaWeighted = document.getElementById("gpa_w").innerHTML;
-  var ecaRating = document.getElementById("eca_rating").value;
-  var majorGroup = document.getElementById("major_group").innerHTML;
-  var collegeName = document.getElementById("addCollege").value;
-    
-  var chanceData = {
-    'student_id': studentId, 
-    'college_name': collegeName, 
-    'gpa_weighted': gpaWeighted,
-    'eca_rating': ecaRating,
-    'major_group': majorGroup
-  }
-
-  var chanceData = JSON.stringify(chanceData)
-
-  fetch('/committee_chancing/quick_ml_chancing', {
-    method: "POST",    
-    body: chanceData    
-  }).then(response=>response.text()).then(input=>{
-
-    input = JSON.parse(input);
-    document.getElementById("new_ml_chancing").innerHTML=input['ml_chancing']    
-
-  })
-
-})
