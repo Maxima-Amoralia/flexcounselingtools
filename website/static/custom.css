@@ -105,3 +105,12 @@ html, body{
     outline: none !important;
     box-shadow: none !important;
 }
+
+.button {cursor: pointer}
+
+
+.remove_college_button {color: #FFFFFF; background-color:#6787b7; width: 30px; border-radius: 5px; text-align: center}
+.standard_select {margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small}
+.college_table {list-style-type: none; margin-left: -40px}
+.college_name_cell {width: 370px; text-align: left; float: left; vertical-align: middle;}
+.college_chancing_cell {width: 130px; text-align: center; float:left; vertical-align: middle;}

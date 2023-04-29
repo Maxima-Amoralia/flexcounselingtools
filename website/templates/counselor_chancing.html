@@ -1,0 +1,200 @@
+{% extends "base.html" %} 
+
+{% block title %}College Chancing{% endblock %} 
+
+{% block content %}
+
+
+
+<div id="student_list">
+
+  <b>Counselor: </b>
+  <select onchange="location = this.options[this.selectedIndex].value;""> 
+    <option hidden="true">Select Counselor</option>
+    <option value='/counselor_chancing?counselor=None'>None Assigned</option>
+    <option value='/counselor_chancing?counselor=All'>All Students</option>
+    <option value='/counselor_chancing?counselor=Alexander_Chang'>Alexander Chang</option>
+    <option value='/counselor_chancing?counselor=April_Cubbage'>April Cubbage</option>
+    <option value='/counselor_chancing?counselor=Ben_Robbins'>Ben Robbins</option>
+    <option value='/counselor_chancing?counselor=Bhavna_Patel'>Bhavna Patel</option>
+    <option value='/counselor_chancing?counselor=Corbin_Chu'>Corbin Chu</option>
+    <option value='/counselor_chancing?counselor=Dan_Kwon'>Dan Kwon</option>
+    <option value='/counselor_chancing?counselor=Danny_Byun'>Danny Byun</option>
+    <option value='/counselor_chancing?counselor=Jaime_Joo'>Jaime Joo</option>
+    <option value='/counselor_chancing?counselor=Jay_Zhang'>Jay Zhang</option>
+    <option value='/counselor_chancing?counselor=Judy_Liang'>Judy Liang</option>
+    <option value='/counselor_chancing?counselor=Justin_Obcena'>Justin Obcena</option>
+    <option value='/counselor_chancing?counselor=Lynea_Diaz-Hagan'>Lynea Diaz-Hagan</option>
+    <option value='/counselor_chancing?counselor=Paul_Lin'>Paul Lin</option>
+    <option value='/counselor_chancing?counselor=Ryan_Vatan'>Ryan Vatan</option>
+    <option value='/counselor_chancing?counselor=Sue_Asokan'>Sue Asokan</option>
+    <option value='/counselor_chancing?counselor=Sunny_Song'>Sunny Song</option>
+    <option value='/counselor_chancing?counselor=Tiffany_Lu_'>Tiffany Lu</option>
+  </select>
+  <br/><br/>
+
+  <b>Track 1:</b>
+
+  <div style="margin-top: 10px">
+    <table style="border: 1px solid #707070;">
+      <tr style="background-color: #bccde6; border: 1px solid #707070;"><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Preferences Interview</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Initial List</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>College Research</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Committee Chancing</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Counselor Chancing</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Selectivity Map</b></td></tr>
+
+    {% for student in jan_start %}  
+          
+      {% if loop.index%2 == 1 %}    
+        <tr style="background-color: #ffffff">
+      {% endif %}    
+      {% if loop.index%2 == 0 %}
+        <tr style="background-color: #e5e5e5">
+      {% endif %}
+          <td style="padding: 4px"><div id="{{ student.id }}" class="student">{{ student.student_name}}</div></td>
+          <td style="text-align: center">{% if student.preferences_interview %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+          <td style="text-align: center">{% if student.initial_list %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+          <td style="text-align: center">{% if student.college_research %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+          <td style="text-align: center">{% if student.committee_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+          <td style="text-align: center">{% if student.counselor_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+          <td style="text-align: center">{% if student.selectivity_map %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+        </tr>
+      
+
+    {% endfor %}
+    </table>
+  </div>
+  <br/>
+
+
+  <b>Track 2:</b>
+
+  <div style="margin-top: 10px">
+    <table style="border: 1px solid #707070">
+      <tr style="background-color: #bccde6; border: 1px solid #707070"><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Preferences Interview</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Initial List</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>College Research</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Committee Chancing</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Counselor Chancing</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Selectivity Map</b></td></tr>
+
+
+        {% for student in mar_start %}  
+            
+          {% if loop.index%2 == 1 %}    
+            <tr style="background-color: #ffffff">
+          {% endif %}    
+          {% if loop.index%2 == 0 %}
+            <tr style="background-color: #e5e5e5">
+          {% endif %}
+              <td style="padding: 4px"><div id="{{ student.id }}">{{ student.student_name}}</div></td>
+              <td style="text-align: center">{% if student.preferences_interview %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+              <td style="text-align: center">{% if student.initial_list %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+              <td style="text-align: center">{% if student.college_research %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+              <td style="text-align: center">{% if student.committee_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+              <td style="text-align: center">{% if student.counselor_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+              <td style="text-align: center">{% if student.selectivity_map %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+            </tr>
+        {% endfor %}
+    </table>
+  </div>
+  <br/>
+
+  <b>Track 3:</b>
+
+  <div style="margin-top: 10px">
+    <table style="border: 1px solid #707070">
+      <tr style="background-color: #bccde6; border: 1px solid #707070""><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Preferences Interview</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Initial List</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>College Research</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Committee Chancing</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Counselor Chancing</b></td>
+        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Selectivity Map</b></td></tr>
+
+        {% for student in jun_start %}  
+          {% if loop.index%2 == 1 %}    
+          <tr style="background-color: #ffffff">
+        {% endif %}    
+        {% if loop.index%2 == 0 %}
+          <tr style="background-color: #e5e5e5">
+        {% endif %}
+            <td style="padding: 4px"><div id="{{ student.id }}">{{ student.student_name}}</div></td>
+            <td style="text-align: center">{% if student.preferences_interview %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+            <td style="text-align: center">{% if student.initial_list %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+            <td style="text-align: center">{% if student.college_research %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+            <td style="text-align: center">{% if student.committee_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+            <td style="text-align: center">{% if student.counselor_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+            <td style="text-align: center">{% if student.selectivity_map %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <br/>
+  </div>
+
+<br/>
+
+<div id="studentInfo" style="display: none">
+  <div>
+    <br>
+    <b>Counselor:</b> <span id = 'counselor'></span><br/>
+    <br/>
+    <b>Student Id:</b> <span id = 'student_id'></span><br/>
+    <b>Package:</b> <span id = 'package'></span><br/>
+    <b>High School:</b> <span id = 'high_school'></span><br/>
+    <b>Track:</b> <span id = 'start_date'></span><br/>
+    <b>Email:</b> <span id = 'student_email'></span><br/><br/>
+
+    <b>Major Category:</b> <span id = 'major_group'></span><br/>
+    <b>GPA Weighted:</b> <span id = "gpa_w"></span><br/>
+    
+    <b>ECA Rating:</b> 
+    <select id="eca_rating" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;"> 
+      <option value="0" hidden="true">None Selected</option>      
+      <option value="0.5">0.5</option>
+      <option value="1">1.0</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2.0</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3.0</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4.0</option>
+      <option value="4.5">4.5</option>
+      <option value="5">5.0</option>      
+    </select><br/><br/>
+  
+    <b>Ace Portal:</b> <span id = 'ace_portal_link'></span><br/>
+    <b>Google Drive:</b> <span id = 'google_drive_link'></span><br/>
+
+  </div>
+  
+
+</div>
+
+<div id="colleges" style="display: none"></div>
+
+<br/>
+
+<div id = "createMapButton" style="height: 30px; width: 220px; background-color: #6787b7; color: #FFFFFF; text-align: center; border-radius: 5px; padding-top: 2px"><b>Create Selectivity Map</b></div>
+
+
+<div style="height: 100px"></div>
+
+  <script 
+    type="text/javascript"
+    src="{{ url_for('static', filename='jquery-3.5.1.js') }}"
+  >
+  </script>
+
+
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='counselor_chancing.js') }}"
+  ></script>
+  
+
+{% endblock %}

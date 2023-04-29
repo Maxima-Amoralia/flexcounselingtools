@@ -19,18 +19,27 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['SQLALCHEMY_BINDS'] = {'spiDatabase' : f'sqlite:///spidatabase.db',
                                       'volunteerDatabase' : f'sqlite:///volunteerdatabase.db',
-                                      'chancingData' : f'sqlite:///chancingdata.db',
-                                      'admitData' : f'sqlite:///admitdata.db'}
+                                      'studentData' : f'sqlite:///studentdata.db',
+                                      'admitData' : f'sqlite:///admitdata.db',
+                                      'collegeDatabase' : f'sqlite:///collegedatabase.db'}
 
     db.init_app(app)
 
     from .views import views    
     from .auth import auth
     from .resultsdata import resultsdata
+    from .committee_chancing import committee_chancing
+    from .counselor_chancing import counselor_chancing
+    from .load_data import load_data
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(resultsdata, url_prefix='/')
+    app.register_blueprint(committee_chancing, url_prefix='/')
+    app.register_blueprint(counselor_chancing, url_prefix='/')
+    app.register_blueprint(load_data, url_prefix='/')
+
+
 
     from .models import User, Note, CA_Activity
 

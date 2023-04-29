@@ -10,11 +10,7 @@ $(document).ready(function() {
     else {
       $(this).html("<i class='fa fa-angle-double-left' style='color:rgb(220, 220, 220)'></i>");
     }
-  });
-
-
-
-  
+  });  
 });
 
 

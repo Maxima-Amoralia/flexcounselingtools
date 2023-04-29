@@ -64,12 +64,22 @@
 
 
           <div style="border-radius: 10px; margin-top: 20px; overflow: hidden; background-color: #6787b7">
+            <div style="color: whitesmoke; text-align: center; font-weight: bold; margin-top: 5px; margin-bottom: -7px">College Chancing</div>
+            <nav class="navbar">              
+                <a href="/committee_chancing" class="sidebar-link"><div class="sidebar-item">Committee Chancing</div></a></li>
+                <a href="/counselor_chancing" class="sidebar-link"><div class="sidebar-item">Counselor Chancing</div></a></li>
+            </nav>
+          </div>
+
+        
+          <div style="border-radius: 10px; margin-top: 20px; overflow: hidden; background-color: #6787b7">
             <div style="color: whitesmoke; text-align: center; font-weight: bold; margin-top: 5px; margin-bottom: -7px">Data</div>
             <nav class="navbar">              
-                <a href="#" class="sidebar-link"><div class="sidebar-item">Chancing</div></a></li>
                 <a href="/resultsdata" class="sidebar-link"><div class="sidebar-item">Results</div></a></li>              
             </nav>
           </div>
+
+
 
           <div style="border-radius: 10px; margin-top: 20px; overflow: hidden; background-color: #6787b7">
             <div style="color: whitesmoke; text-align: center; font-weight: bold; margin-top: 5px; margin-bottom: -7px">Prototypes</div>
@@ -91,8 +101,6 @@
 
 
     </div>
-
-
 
 
     <script
@@ -119,6 +127,8 @@
       type="text/javascript"
       src="{{ url_for('static', filename='index.js') }}"
     ></script>
+    
+    {% block footer %} {% endblock %}
     
   </body>
 </html>

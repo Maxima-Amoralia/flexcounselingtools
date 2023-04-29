@@ -82,7 +82,6 @@ def callback():
         return "User email not available or not verified by Google.", 400
 
   
-
     user = User.query.filter_by(id=unique_id).first()
 
     new_user = User(id=unique_id, email=users_email, first_name=users_name, last_name=family_name, full_name=full_name)

@@ -11,7 +11,36 @@ resultsdata = Blueprint('resultsdata', __name__)
 @resultsdata.route("/resultsdata", methods=["POST","GET"])
 @login_required
 def results():
-    return render_template("resultsdata.html")
+
+    from google.auth.transport.requests import Request
+    from google.oauth2.credentials import Credentials
+    from google_auth_oauthlib.flow import InstalledAppFlow
+    from googleapiclient import errors
+    from googleapiclient.discovery import build
+
+    from google.oauth2 import service_account
+
+    import pandas as pd
+
+    SERVICE_ACCOUNT_FILE = 'keys.json'
+    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+
+    creds = None
+
+    creds = service_account.Credentials.from_service_account_file(
+            SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+
+    print(creds.scopes)
+
+    DATA_SHEET_ID = '1SKbP017fzVOXeL6_uoeoQIwl13O5Jn3_7UUrl0yIXx4'
+
+    service = build('sheets', 'v4', credentials=creds)
+
+    sheet = service.spreadsheets()
+    result = sheet.values().get(spreadsheetId = DATA_SHEET_ID, range = "'ACE Data'!A1:AP170").execute()
+
+
+    return render_template("resultsdata.html", students=result)
 
 
 

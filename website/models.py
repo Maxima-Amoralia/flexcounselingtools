@@ -44,6 +44,41 @@ class UCActivity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+
+class StudentDatabase(db.Model):
+    __bind_key__ = "studentData"
+    __tablename__ = "student_database"
+    id = db.Column(db.Integer, primary_key=True)
+    student_name = db.Column(db.String(70))
+    start_date = db.Column(db.String(70))
+    counselor = db.Column(db.String(100))
+    high_school = db.Column(db.String(100))
+    package = db.Column(db.String(100))
+    google_folder = db.Column(db.String(200))
+    ace_portal = db.Column(db.String(200))
+    student_email = db.Column(db.String(100))
+    major_group = db.Column(db.String(100))
+    gpa_w = db.Column(db.Float)
+    eca_rating = db.Column(db.Float)
+    preferences_interview = db.Column(db.Boolean)
+    initial_list = db.Column(db.Boolean)
+    college_research = db.Column(db.Boolean)
+    committee_chancing = db.Column(db.Boolean)
+    counselor_chancing = db.Column(db.Boolean)
+    selectivity_map = db.Column(db.Boolean)
+    college = db.relationship('SelectedCollege')
+
+class SelectedCollege(db.Model):
+    __bind_key__ = "studentData"
+    id = db.Column(db.Integer, primary_key=True)
+    ipeds_id = db.Column(db.Integer)
+    college_name = db.Column(db.String(70))
+    student_chancing = db.Column(db.String(70))
+    ml_chancing = db.Column(db.String(70))
+    committee_chancing = db.Column(db.String(70))
+    counselor_chancing = db.Column(db.String(70))
+    student_id = db.Column(db.Integer, db.ForeignKey('student_database.id'))
+
 class StudentData(db.Model):
     __bind_key__ = "admitData"
     student_id = db.Column(db.String(40), primary_key=True)
@@ -70,3 +105,10 @@ class StudentData(db.Model):
     san_diego = db.Column(db.String(10))
     santa_barbara = db.Column(db.String(10))
     santa_cruz = db.Column(db.String(10))
+
+
+class CollegeDatabase(db.Model):
+    __bind_key__ = "collegeDatabase"
+    id = db.Column(db.Integer, primary_key=True)
+    ipeds_id = db.Column(db.Integer)
+    college_name = db.Column(db.String(70))

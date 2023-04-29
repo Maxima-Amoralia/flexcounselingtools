@@ -8,7 +8,7 @@ function deleteCAActivity(activityId) {
   });
 }
 
-$( '.form-select' ).change(function() {
+$('.form-select').change(function() {
   $(this).parent().parent().children('div').children('.save-button').css('background-color', '#007bff'); 
 })
 
@@ -92,6 +92,8 @@ $('form').on( 'submit', function(e) {
   
   var unindexed_array = $(this).serializeArray();
   var indexed_array = {};
+
+
 
   $.map(unindexed_array, function(n, i){
       indexed_array[n['name']] = n['value'];

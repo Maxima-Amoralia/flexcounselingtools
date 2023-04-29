@@ -28,8 +28,6 @@ def home():
 @login_required
 def dactivities():
     
-    
-
     if request.method == 'POST':
         activity_type = request.form.get('activity_type')
         position = request.form.get('position')
