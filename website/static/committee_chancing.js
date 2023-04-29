@@ -59,9 +59,7 @@ document.getElementById("submit_button").addEventListener('click', function test
       var output = output+"<div class='college_chancing_cell'><b>Student Self-Chancing</b></div>";
       var output = output+"<div class='college_chancing_cell'><b>ML<br/>Chancing</b></div>";
       var output = output+"<div class='college_chancing_cell'><b>Committee Chancing</b></div>";
-      var output = output+"<div style='clear: both'></div></div></li>"
-
-      
+      var output = output+"<div style='clear: both'></div></div></li>"      
 
       for (i=0; i<input.length; i++) {
 
@@ -113,10 +111,8 @@ document.getElementById("submit_button").addEventListener('click', function test
 
       var output = output+"</ul>"
       
-
       document.getElementById("addCollegeContainer").style = "display: block";
       document.getElementById("colleges").innerHTML = output;
-
 
       $('.remove_college_button').on('click', function(e) {        
         $(this).parent().parent().parent().remove();
@@ -163,7 +159,6 @@ document.getElementById("addCollegeButton").addEventListener('click', function t
   var collegeName = document.getElementById("addCollege").value;
   var newChancing = document.getElementById('newChancing').value;
   var newMLChancing = document.getElementById('new_ml_chancing').innerHTML;
-  
 
   if (newChancing=='very_likely') {newChancing = 'Very Likely'}
   if (newChancing=='likely') {newChancing = 'Likely'}
@@ -268,6 +263,8 @@ document.getElementById("addCollege").addEventListener('change', function test()
     'major_group': majorGroup
   }
 
+  alert(studentID+' '+collegeName)
+
   var chanceData = JSON.stringify(chanceData)
 
   fetch('/committee_chancing/quick_ml_chancing', {
@@ -276,10 +273,9 @@ document.getElementById("addCollege").addEventListener('change', function test()
   }).then(response=>response.text()).then(input=>{
 
     input = JSON.parse(input);
-    document.getElementById("new_ml_chancing").innerHTML=input['ml_chancing']
-    //$('new_ml_chancing').text('hi');
+    alert(input['ml_chancing'])
+    document.getElementById("new_ml_chancing").innerHTML=input['ml_chancing']    
 
   })
-
 
 })
