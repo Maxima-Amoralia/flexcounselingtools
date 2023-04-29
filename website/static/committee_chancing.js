@@ -255,6 +255,8 @@ document.getElementById("addCollege").addEventListener('change', function test()
   var majorGroup = document.getElementById("major_group").innerHTML;
   var collegeName = document.getElementById("addCollege").value;
 
+  alert(studentId)
+
   var chanceData = {
     'student_id': studentId, 
     'college_name': collegeName, 
@@ -263,13 +265,11 @@ document.getElementById("addCollege").addEventListener('change', function test()
     'major_group': majorGroup
   }
 
-  alert(studentID+' '+collegeName)
-
   var chanceData = JSON.stringify(chanceData)
 
   fetch('/committee_chancing/quick_ml_chancing', {
     method: "POST",    
-    body: chanceData
+    body: chanceData    
   }).then(response=>response.text()).then(input=>{
 
     input = JSON.parse(input);
