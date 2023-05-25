@@ -39,8 +39,6 @@ def create_app():
     app.register_blueprint(counselor_chancing, url_prefix='/')
     app.register_blueprint(load_data, url_prefix='/')
 
-
-
     from .models import User, Note, CA_Activity
 
     with app.app_context():

@@ -77,7 +77,9 @@ class SelectedCollege(db.Model):
     ml_chancing = db.Column(db.String(70))
     committee_chancing = db.Column(db.String(70))
     counselor_chancing = db.Column(db.String(70))
+    counselor_rec = db.Column(db.String(100))
     student_id = db.Column(db.Integer, db.ForeignKey('student_database.id'))
+
 
 class StudentData(db.Model):
     __bind_key__ = "admitData"

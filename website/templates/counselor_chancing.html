@@ -90,7 +90,7 @@
           {% if loop.index%2 == 0 %}
             <tr style="background-color: #e5e5e5">
           {% endif %}
-              <td style="padding: 4px"><div id="{{ student.id }}">{{ student.student_name}}</div></td>
+              <td style="padding: 4px"><div id="{{ student.id }}" class="student">{{ student.student_name}}</div></td>
               <td style="text-align: center">{% if student.preferences_interview %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
               <td style="text-align: center">{% if student.initial_list %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
               <td style="text-align: center">{% if student.college_research %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
@@ -107,7 +107,7 @@
 
   <div style="margin-top: 10px">
     <table style="border: 1px solid #707070">
-      <tr style="background-color: #bccde6; border: 1px solid #707070""><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>
+      <tr style="background-color: #bccde6; border: 1px solid #707070"><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Preferences Interview</b></td>
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Initial List</b></td>
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>College Research</b></td>
@@ -122,7 +122,7 @@
         {% if loop.index%2 == 0 %}
           <tr style="background-color: #e5e5e5">
         {% endif %}
-            <td style="padding: 4px"><div id="{{ student.id }}">{{ student.student_name}}</div></td>
+            <td style="padding: 4px"><div id="{{ student.id }}" class="student">{{ student.student_name}}</div></td>
             <td style="text-align: center">{% if student.preferences_interview %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
             <td style="text-align: center">{% if student.initial_list %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
             <td style="text-align: center">{% if student.college_research %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
@@ -175,8 +175,43 @@
 
 </div>
 
-<div id="colleges" style="display: none"></div>
 
+<div id="colleges">
+
+</div>
+
+<div style="clear: both"></div>
+
+<div id="addCollegeContainer" style="display: none; width: 100px">
+  <div>
+    <div class="college_name_cell">
+      <select id="addCollege" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;">
+        <option value="" hidden="true">Select College</option> 
+        {% for college in college_data %}  
+        <option value="{{ college.college_name }}">{{ college.college_name }}</option>
+        {% endfor %}
+
+      </select>
+    </div>
+    <div class="college_chancing_cell">-----</div>
+    <div class="college_chancing_cell" id="new_ml_chancing">-----</div>
+    <div class="college_chancing_cell">-----</div>
+    <div class="college_chancing_cell">
+      <select id = "newChancing" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small">
+        <option value="select" hidden="true">Select</option>
+        <option value="very_likely">Very Likely</option>
+        <option value='likely'>Likely</option>
+        <option value='target'>Target</option>
+        <option value='reach'>Reach</option>
+        <option value='far_reach'>Far Reach</option>
+      </select>
+    </div>
+    <div class="college_chancing_cell"><div id="addCollegeButton" class = "button" style="color: #FFFFFF; background-color:#6787b7; width: 30px; border-radius: 5px"><i class="fa fa-plus" aria-hidden="true"></i></div></div>
+  </div>
+</div>
+
+
+<br/>
 <br/>
 
 <div id = "createMapButton" style="height: 30px; width: 220px; background-color: #6787b7; color: #FFFFFF; text-align: center; border-radius: 5px; padding-top: 2px"><b>Create Selectivity Map</b></div>

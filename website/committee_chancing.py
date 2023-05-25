@@ -183,7 +183,6 @@ def loadStudentColleges():
 @committee_chancing.route("/committee_chancing/load", methods=["POST","GET"])
 @login_required
 def loaddata():
-
     from google.auth.transport.requests import Request
     from google.oauth2.credentials import Credentials
     from google_auth_oauthlib.flow import InstalledAppFlow
