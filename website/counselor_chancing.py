@@ -437,6 +437,9 @@ def saveMap():
             
         ]
 
+    student.selectivity_map = True
+    db.session.commit()
+
     requests.append(replaceText)
     docService.documents().batchUpdate(documentId=file_id, body={'requests': requests}).execute()
 
