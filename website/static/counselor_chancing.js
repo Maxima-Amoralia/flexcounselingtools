@@ -56,6 +56,7 @@ $('.student').on('click', function(e) {
     body: JSON.stringify({ id: studentId })
   }).then(response=>response.text()).then(input=>{
       
+    alert(input)
       input = JSON.parse(input);
       
       document.getElementById("student_list").style.display="none";

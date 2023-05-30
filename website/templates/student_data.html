@@ -1,0 +1,101 @@
+{% extends "base.html" %} 
+
+{% block title %}College Chancing{% endblock %} 
+
+{% block content %}
+
+<div id="studentInfo" style="display: none">
+  <div>
+    <br>
+    <b>Counselor:</b> <span id = 'counselor'></span><br/>
+    <br/>
+    <b>Student Id:</b> <span id = 'student_id'></span><br/>
+    <b>Package:</b> <span id = 'package'></span><br/>
+    <b>High School:</b> <span id = 'high_school'></span><br/>
+    <b>Track:</b> <span id = 'start_date'></span><br/>
+    <b>Email:</b> <span id = 'student_email'></span><br/><br/>
+
+    <b>Major Category:</b> <span id = 'major_group'></span><br/>
+    <b>GPA Weighted:</b> <span id = "gpa_w"></span><br/>
+    
+    <b>ECA Rating:</b> 
+    <select id="eca_rating" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;"> 
+      <option value="0" hidden="true">None Selected</option>      
+      <option value="0.5">0.5</option>
+      <option value="1">1.0</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2.0</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3.0</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4.0</option>
+      <option value="4.5">4.5</option>
+      <option value="5">5.0</option>      
+    </select><br/><br/>
+  
+    <b>Ace Portal:</b> <span id = 'ace_portal_link'></span><br/>
+    <b>Google Drive:</b> <span id = 'google_drive_link'></span><br/>
+
+  </div>
+  
+
+</div>
+
+
+<div id="colleges">
+
+</div>
+
+<div style="clear: both"></div>
+
+<div id="addCollegeContainer" style="display: none; width: 100px">
+  <div>
+    <div class="college_name_cell">
+      <select id="addCollege" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;">
+        <option value="" hidden="true">Select College</option> 
+        {% for college in college_data %}  
+        <option value="{{ college.college_name }}">{{ college.college_name }}</option>
+        {% endfor %}
+
+      </select>
+    </div>
+    <div class="college_chancing_cell">-----</div>
+    <div class="college_chancing_cell" id="new_ml_chancing">-----</div>
+    <div class="college_chancing_cell">-----</div>
+    <div class="college_chancing_cell">
+      <select id = "newChancing" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small">
+        <option value="select" hidden="true">Select</option>
+        <option value="very_likely">Very Likely</option>
+        <option value='likely'>Likely</option>
+        <option value='target'>Target</option>
+        <option value='reach'>Reach</option>
+        <option value='far_reach'>Far Reach</option>
+      </select>
+    </div>
+    <div class="college_chancing_cell"><div id="addCollegeButton" class = "button" style="color: #FFFFFF; background-color:#6787b7; width: 30px; border-radius: 5px"><i class="fa fa-plus" aria-hidden="true"></i></div></div>
+  </div>
+</div>
+
+
+<br/>
+<br/>
+
+<div id = "createMapButton" style="height: 30px; width: 220px; background-color: #6787b7; color: #FFFFFF; text-align: center; border-radius: 5px; padding-top: 2px"><b>Create Selectivity Map</b></div>
+
+
+<div style="height: 100px"></div>
+
+  <script 
+    type="text/javascript"
+    src="{{ url_for('static', filename='jquery-3.5.1.js') }}"
+  >
+  </script>
+
+
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='counselor_chancing.js') }}"
+  ></script>
+  
+
+{% endblock %}

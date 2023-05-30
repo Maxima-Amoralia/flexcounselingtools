@@ -62,7 +62,7 @@ document.getElementById("chance_student").addEventListener('change', function te
         document.getElementById("google_drive_link").innerHTML = "<b><a href='"+input['google_folder']+"'>[LINK]</a></b>";
 
         document.getElementById("colleges").innerHTML = " ";
-        document.getElementById("save_button").style="height: 30px; background-color: #7e9cff; color: #FFFFFF; width: 200px; text-align: center; padding-top: 3px;border-radius: 5px; display: none"
+        //document.getElementById("save_button").style="height: 30px; background-color: #7e9cff; color: #FFFFFF; width: 200px; text-align: center; padding-top: 3px;border-radius: 5px; display: none"
     })
 })
 

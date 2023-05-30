@@ -11,6 +11,15 @@ from sqlalchemy.orm import Session
 
 counselor_chancing = Blueprint('counselor_chancing', __name__)
 
+
+@counselor_chancing.route("/counselor_chancing/<studentid>", methods=["POST","GET"])
+@login_required
+def loadStudentId(studentid):
+    
+    print(studentid);
+    return '0'
+
+
 @counselor_chancing.route("/counselor_chancing", methods=["POST","GET"])
 @login_required
 def loadStudentDatabase():
