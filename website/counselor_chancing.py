@@ -107,6 +107,17 @@ def studentdata():
     
     print(collegeList)
 
+    import pickle
+
+    file_name = 'chancing_models.pkl'
+    models = []
+
+    with open(file_name, 'rb') as f:
+        while True:
+            try:
+                models = pickle.load(f)
+            except EOFError:
+                break
 
     output = {
         'id' : student.id,

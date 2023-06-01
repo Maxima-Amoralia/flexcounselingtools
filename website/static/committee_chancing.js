@@ -86,10 +86,10 @@ document.getElementById("submit_button").addEventListener('click', function test
 
       var output = "<ul id='college_table' class='college_table'>";
       var output = output+"<li id='college_table_header'><div>";
-      var output = output+"<div class='college_name_cell' style='padding-top: 10px'><b>College</b></div>";
-      var output = output+"<div class='college_chancing_cell'><b>Student Self-Chancing</b></div>";
-      var output = output+"<div class='college_chancing_cell'><b>ML<br/>Chancing</b></div>";
-      var output = output+"<div class='college_chancing_cell'><b>Committee Chancing</b></div>";
+      var output = output+"<div class='college_name_header' style='padding-top: 10px'><b>College</b></div>";
+      var output = output+"<div class='college_chancing_header'><b>Student Self-Chancing</b></div>";
+      var output = output+"<div class='college_chancing_header'><b>ML<br/>Chancing</b></div>";
+      var output = output+"<div class='college_chancing_header'><b>Committee Chancing</b></div>";
       var output = output+"<div style='clear: both'></div></div></li>"      
 
       for (i=0; i<input.length; i++) {
