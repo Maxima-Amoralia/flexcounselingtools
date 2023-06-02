@@ -9,8 +9,12 @@ import requests
 import json
 from oauthlib.oauth2 import WebApplicationClient
 
-GOOGLE_CLIENT_ID = os.environ['GOOGLE_CLIENT_ID']
-GOOGLE_CLIENT_SECRET = os.environ['GOOGLE_CLIENT_SECRET']
+#GOOGLE_CLIENT_ID = os.environ['GOOGLE_CLIENT_ID']
+#GOOGLE_CLIENT_SECRET = os.environ['GOOGLE_CLIENT_SECRET']
+
+GOOGLE_CLIENT_ID = ('720222462733-30kbuvi0nf4r8a6ua3f9u3bvtcqn8mji.apps.googleusercontent.com')
+GOOGLE_CLIENT_SECRET = ('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')
+
 GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
