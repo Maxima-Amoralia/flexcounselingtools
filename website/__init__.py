@@ -15,7 +15,6 @@ DB_NAME = "database.db"
 os.environ['GOOGLE_CLIENT_ID'] = '720222462733-30kbuvi0nf4r8a6ua3f9u3bvtcqn8mji.apps.googleusercontent.com'
 os.environ['GOOGLE_CLIENT_SECRET'] = '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'
 
-
 os.environ['SECRET_KEY'] = 'cokeoriginaltaste'
 
 def create_app():
