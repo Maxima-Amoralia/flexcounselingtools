@@ -9,8 +9,13 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
-os.environ['GOOGLE_CLIENT_ID'] = '646560245315-bodcvrrsacfq27u1babt7s17jt7i5fma.apps.googleusercontent.com'
-os.environ['GOOGLE_CLIENT_SECRET'] = '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'
+#os.environ['GOOGLE_CLIENT_ID'] = '646560245315-bodcvrrsacfq27u1babt7s17jt7i5fma.apps.googleusercontent.com'
+#os.environ['GOOGLE_CLIENT_SECRET'] = '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'
+
+os.environ['GOOGLE_CLIENT_ID'] = '720222462733-30kbuvi0nf4r8a6ua3f9u3bvtcqn8mji.apps.googleusercontent.com'
+os.environ['GOOGLE_CLIENT_SECRET'] = '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'
+
+
 os.environ['SECRET_KEY'] = 'cokeoriginaltaste'
 
 def create_app():
