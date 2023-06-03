@@ -67,7 +67,7 @@ def callback():
             code=code
         )
     except: 
-        return token_url, 400
+        return "stage 3", 400
     
     try:
         token_response = requests.post(
