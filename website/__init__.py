@@ -12,11 +12,8 @@ DB_NAME = "database.db"
 #os.environ['GOOGLE_CLIENT_ID'] = '646560245315-bodcvrrsacfq27u1babt7s17jt7i5fma.apps.googleusercontent.com'
 #os.environ['GOOGLE_CLIENT_SECRET'] = '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'
 
-#os.environ['GOOGLE_CLIENT_ID'] = '720222462733-228cv52n5m79dc0q1o2q1hritp2hv8sh.apps.googleusercontent.com'
-#os.environ['GOOGLE_CLIENT_SECRET'] = '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'
-
-os.environ['GOOGLE_CLIENT_ID'] = '900378647364-2lb1dh0b98kqdojlomgfriv4vakr6net.apps.googleusercontent.com'
-os.environ['GOOGLE_CLIENT_SECRET'] = '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'
+os.environ['GOOGLE_CLIENT_ID'] = '720222462733-228cv52n5m79dc0q1o2q1hritp2hv8sh.apps.googleusercontent.com'
+os.environ['GOOGLE_CLIENT_SECRET'] = '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'
 
 os.environ['SECRET_KEY'] = 'cokeoriginaltaste'
 
