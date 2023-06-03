@@ -44,27 +44,40 @@ def login():
 @auth.route("/login/callback")
 def callback():
 
-    # Get authorization code Google sent back to you
-    code = request.args.get("code")
+    try:
+        # Get authorization code Google sent back to you
+        code = request.args.get("code")
+    except: 
+        return "stage 1", 400
 
     # Find out what URL to hit to get tokens that allow you to ask for
     # things on behalf of a user
-    google_provider_cfg = get_google_provider_cfg()
-    token_endpoint = google_provider_cfg["token_endpoint"]
+    try:
+        google_provider_cfg = get_google_provider_cfg()
+        token_endpoint = google_provider_cfg["token_endpoint"]
+    except: 
+        return "stage 2", 400
 
     # Prepare and send a request to get tokens! Yay tokens!
-    token_url, headers, body = client.prepare_token_request(
-        token_endpoint,
-        authorization_response=request.url,
-        redirect_url=request.base_url,
-        code=code
-    )
-    token_response = requests.post(
-        token_url,
-        headers=headers,
-        data=body,
-        auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
-    )
+    try:
+        token_url, headers, body = client.prepare_token_request(
+            token_endpoint,
+            authorization_response=request.url,
+            redirect_url=request.base_url,
+            code=code
+        )
+    except: 
+        return "stage 3", 400
+    
+    try:
+        token_response = requests.post(
+            token_url,
+            headers=headers,
+            data=body,
+            auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
+        )
+    except: 
+        return "stage 4", 400
 
     # Parse the tokens!
     client.parse_request_body_response(json.dumps(token_response.json()))
