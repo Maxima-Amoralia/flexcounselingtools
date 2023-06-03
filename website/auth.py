@@ -74,7 +74,7 @@ def callback():
             token_url,
             headers=headers,
             data=body,
-            auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
+            auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET)
         )
     except: 
         return "stage 4", 400
