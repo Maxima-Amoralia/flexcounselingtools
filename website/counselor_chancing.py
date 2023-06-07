@@ -12,12 +12,7 @@ from sqlalchemy.orm import Session
 counselor_chancing = Blueprint('counselor_chancing', __name__)
 
 
-@counselor_chancing.route("/counselor_chancing/<studentid>", methods=["POST","GET"])
-@login_required
-def loadStudentId(studentid):
-    
-    print(studentid);
-    return '0'
+
 
 
 @counselor_chancing.route("/counselor_chancing", methods=["POST","GET"])
@@ -97,9 +92,16 @@ def studentdata():
 
     colleges = SelectedCollege.query.filter_by(student_id=input['id']).all()
 
-    for college in colleges:
-        collegeList.append([college.college_name, college.student_chancing, college.ml_chancing, college.committee_chancing, college.counselor_chancing, college.counselor_rec])        
     
+    
+    for college in colleges:
+        if not college.counselor_chancing:            
+            college.counselor_chancing=college.committee_chancing
+            db.session.commit()                
+        collegeList.append([college.college_name, college.student_chancing, college.ml_chancing, college.committee_chancing, college.committee_chancing, college.counselor_rec])        
+    
+
+
     print(collegeList)
 
     import pickle

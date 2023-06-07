@@ -59,7 +59,7 @@
 <div id="addCollegeContainer" style="display: none">
   <div>
     <div class="college_name_cell">
-      <select id="addCollege" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small;">
+      <select id="addCollege" class="standard_select" style="width:290px">
         <option value="" hidden="true">Select College</option> 
         {% for college in college_data %}  
         <option value="{{ college.college_name }}">{{ college.college_name }}</option>
@@ -70,7 +70,7 @@
     <div class="college_chancing_cell">-----</div>
     <div class="college_chancing_cell" id="new_ml_chancing">-----</div>
     <div class="college_chancing_cell">
-      <select id = "newChancing" style="margin-top: 3px; margin-bottom: 3px; height:24px; font-size: small">
+      <select id = "newChancing" class="standard_select">
         <option value="select" hidden="true">Select</option>
         <option value="very_likely">Very Likely</option>
         <option value='likely'>Likely</option>
@@ -79,7 +79,7 @@
         <option value='far_reach'>Far Reach</option>
       </select>
     </div>
-    <div class="college_chancing_cell"><div id="addCollegeButton" class = "button" style="color: #FFFFFF; background-color:#6787b7; width: 30px; border-radius: 5px"><i class="fa fa-plus" aria-hidden="true"></i></div></div>
+    <div class="college_chancing_cell"><div id="addCollegeButton" class = "button add_college_button" ><i class="fa fa-plus" aria-hidden="true"></i></div></div>
   </div>
 </div>
 

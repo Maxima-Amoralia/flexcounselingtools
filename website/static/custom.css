@@ -110,6 +110,7 @@ html, body{
 
 
 .remove_college_button {margin-top: 5px; color: #FFFFFF; background-color:#6787b7; width: 20px; border-radius: 5px; text-align: center; font-size: small}
+.add_college_button {margin-top: 5px; color: #FFFFFF; background-color:#6787b7; width: 20px; border-radius: 5px; text-align: center; font-size: small}
 .standard_select {margin-top: 2px; margin-bottom: 2px; height:16px; font-size: 10px; width: 70px}
 .college_table {list-style-type: none; margin-left: -40px}
 .college_name_cell {width: 290px; min-height: 24px; text-align: left; float: left; vertical-align: middle; font-size: 13px}
