@@ -442,7 +442,7 @@ def saveMap():
                      
             
         ]
-
+    student.counselor_chancing = True
     student.selectivity_map = True
     db.session.commit()
 
