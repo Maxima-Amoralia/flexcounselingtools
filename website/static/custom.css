@@ -117,3 +117,4 @@ html, body{
 .college_name_header {width: 290px; text-align: left; float: left; vertical-align: middle; font-size: 13px}
 .college_chancing_header {width: 80px; text-align: center; float:left; vertical-align: middle; font-size: 13px}
 .counselor_rec {width: 70px;}
+.student{cursor: pointer}

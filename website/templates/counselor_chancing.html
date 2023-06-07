@@ -37,10 +37,7 @@
 
   <div style="margin-top: 10px">
     <table style="border: 1px solid #707070;">
-      <tr style="background-color: #bccde6; border: 1px solid #707070;"><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>
-        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Preferences Interview</b></td>
-        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Initial List</b></td>
-        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>College Research</b></td>
+      <tr style="background-color: #bccde6; border: 1px solid #707070;"><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>        
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Committee Chancing</b></td>
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Counselor Chancing</b></td>
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Selectivity Map</b></td></tr>
@@ -53,10 +50,7 @@
       {% if loop.index%2 == 0 %}
         <tr style="background-color: #e5e5e5">
       {% endif %}
-          <td style="padding: 4px"><div id="{{ student.id }}" class="student">{{ student.student_name}}</div></td>
-          <td style="text-align: center">{% if student.preferences_interview %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
-          <td style="text-align: center">{% if student.initial_list %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
-          <td style="text-align: center">{% if student.college_research %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+          <td style="padding: 4px"><div id="{{ student.id }}" class="student">{{ student.student_name}}</div></td>          
           <td style="text-align: center">{% if student.committee_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
           <td style="text-align: center">{% if student.counselor_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
           <td style="text-align: center">{% if student.selectivity_map %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
@@ -73,10 +67,7 @@
 
   <div style="margin-top: 10px">
     <table style="border: 1px solid #707070">
-      <tr style="background-color: #bccde6; border: 1px solid #707070"><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>
-        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Preferences Interview</b></td>
-        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Initial List</b></td>
-        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>College Research</b></td>
+      <tr style="background-color: #bccde6; border: 1px solid #707070"><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>        
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Committee Chancing</b></td>
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Counselor Chancing</b></td>
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Selectivity Map</b></td></tr>
@@ -91,9 +82,6 @@
             <tr style="background-color: #e5e5e5">
           {% endif %}
               <td style="padding: 4px"><div id="{{ student.id }}" class="student">{{ student.student_name}}</div></td>
-              <td style="text-align: center">{% if student.preferences_interview %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
-              <td style="text-align: center">{% if student.initial_list %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
-              <td style="text-align: center">{% if student.college_research %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
               <td style="text-align: center">{% if student.committee_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
               <td style="text-align: center">{% if student.counselor_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
               <td style="text-align: center">{% if student.selectivity_map %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
@@ -107,10 +95,7 @@
 
   <div style="margin-top: 10px">
     <table style="border: 1px solid #707070">
-      <tr style="background-color: #bccde6; border: 1px solid #707070"><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>
-        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Preferences Interview</b></td>
-        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Initial List</b></td>
-        <td style="width: 110px; text-align: center; vertical-align: bottom"><b>College Research</b></td>
+      <tr style="background-color: #bccde6; border: 1px solid #707070"><td style="width: 210px; text-align: center; vertical-align: bottom"><b>Student Name:</b></td>        
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Committee Chancing</b></td>
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Counselor Chancing</b></td>
         <td style="width: 110px; text-align: center; vertical-align: bottom"><b>Selectivity Map</b></td></tr>
@@ -122,10 +107,7 @@
         {% if loop.index%2 == 0 %}
           <tr style="background-color: #e5e5e5">
         {% endif %}
-            <td style="padding: 4px"><div id="{{ student.id }}" class="student">{{ student.student_name}}</div></td>
-            <td style="text-align: center">{% if student.preferences_interview %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
-            <td style="text-align: center">{% if student.initial_list %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
-            <td style="text-align: center">{% if student.college_research %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
+            <td style="padding: 4px"><div id="{{ student.id }}" class="student">{{ student.student_name}}</div></td>           
             <td style="text-align: center">{% if student.committee_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
             <td style="text-align: center">{% if student.counselor_chancing %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
             <td style="text-align: center">{% if student.selectivity_map %} <div style="color: #38761d"><i class="fa fa-check"></i></div> {% endif %}</td>
@@ -178,7 +160,6 @@
 
 <div id="colleges">
 
-  adsfsdf
 </div>
 
 <div style="clear: both"></div>
@@ -215,7 +196,7 @@
 <br/>
 <br/>
 
-<div id = "createMapButton" style="height: 30px; width: 220px; background-color: #6787b7; color: #FFFFFF; text-align: center; border-radius: 5px; padding-top: 2px"><b>Create Selectivity Map</b></div>
+<div id = "createMapButton" style="height: 30px; width: 220px; background-color: #6787b7; color: #FFFFFF; text-align: center; border-radius: 5px; padding-top: 2px; cursor: pointer"><b>Create Selectivity Map</b></div>
 
 
 <div style="height: 100px"></div>

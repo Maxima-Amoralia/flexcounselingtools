@@ -26,11 +26,6 @@ def loadStudentDatabase():
     
     counselor = request.args.get('counselor','')
     counselor = counselor.replace('_', ' ')
-
-    print(counselor)
-
-    if current_user.first_name == 'Alex' and current_user.last_name == 'Chang' and counselor=='':
-        counselor='Alexander Chang'
     
     if counselor == '' or counselor == 'All':
         janStart = StudentDatabase.query.filter_by(start_date='01 Jan Start').order_by(StudentDatabase.student_name).all()

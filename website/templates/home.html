@@ -3,26 +3,12 @@
 {% block title %}Home{% endblock %} 
 
 {% block content %}
-  <h1 align="center">Notes {{user.first_name}} {{user.last_name}}</h1>
-  <ul class="list-group list-group-flush" id="notes">
-    {% for note in user.note %}
-      <li class="list-group-item">
-        {{ note.data }}
-        <button type="button" class="close" onClick="deleteNote(parseInt('{{ note.id }}'))">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </li>
-    {% endfor %}
-  </ul>
-
+  
   <form name="note-input" method="POST">
-    <textarea name="note" id="note" class="form-control"></textarea>
-    <div id="the-count">
-      <span class="current">0</span> / <span class="maximum">30</span>
-    </div>
+    <input type="password" name ="password" id="password" class="form-control"></textarea>    
     <br />
     <div align="center">
-      <button type="submit" class="btn btn-primary">Add Note</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
 
