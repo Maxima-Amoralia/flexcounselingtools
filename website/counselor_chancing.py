@@ -253,12 +253,18 @@ def saveMap():
 
         insertIndex = tableLocations[x]+3
 
-        uWidth=140
+        uWidth=140        
+        if not college.counselor_chancing:
+            college.counselor_chancing=college.committee_chancing
+            db.sesssion.commit()
+
+        print(college.college_name)
 
         if college.counselor_chancing == "Far Reach":
             targetColumn = 0
             insertIndexIncrement = 0
             c0Width = uWidth
+            c1Width = 5
         elif college.counselor_chancing =="Reach": 
             targetColumn = 1
             insertIndexIncrement = 2
@@ -279,6 +285,7 @@ def saveMap():
             insertIndexIncrement = 2
             c0Width = 468-uWidth
             c1Width = uWidth
+        
 
         red = 0;
         green = 0;
