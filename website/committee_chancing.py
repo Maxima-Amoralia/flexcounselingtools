@@ -28,13 +28,7 @@ def updateChancing():
     
     collegeName = input['college_name'].replace('_', ' ')
 
-    college = SelectedCollege.query.filter_by(student_id=input['student_id']).all();
-
-    for x in college:
-        print(x.college_name)
-
     college = SelectedCollege.query.filter_by(student_id=input['student_id'], college_name=collegeName).first()
-
 
     if college:
         college.committee_chancing=input['chancing'];

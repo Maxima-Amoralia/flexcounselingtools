@@ -61,7 +61,6 @@ $('.student').on('click', function(e) {
       document.getElementById("studentInfo").style.display ="block";
       document.getElementById("colleges").style.display ="block";
 
-
       document.getElementById("student_id").innerHTML = input['id'];
       document.getElementById("start_date").innerHTML = input['start_date'];
       document.getElementById("student_email").innerHTML = input['student_email'];
@@ -177,12 +176,17 @@ $('.student').on('click', function(e) {
       document.getElementById("colleges").innerHTML = output;
 
 
-      $('.remove_college_button').on('click', function(e) {        
-        $(this).parent().parent().parent().remove();
+
+      $('.remove_college_button').on('click', function(e) {     
+           
         
+
+        alert(studentId);
         var collegeName = $(this).parent().parent().parent().children('div').children('.college_name_cell').text();
         var removeCollege = {'student_id':studentId, 'college_name': collegeName}
         var removeData = JSON.stringify(removeCollege);
+
+        $(this).parent().parent().parent().remove();
 
         fetch('/committee_chancing/delete_college', {
           method: "POST",    
@@ -191,7 +195,6 @@ $('.student').on('click', function(e) {
       })
 
       $('.counselor_chancing').on('change', function(e) {        
-        var studentId = document.getElementById("student_id").innerHTML;
         var sendChancing = '';
         
         if ($(this).find(":selected").val() == 'very_likely') {sendChancing = 'Very Likely'}
@@ -211,7 +214,6 @@ $('.student').on('click', function(e) {
 
       $('.counselor_rec').on('change', function(e) {        
                 
-        var studentId = document.getElementById("student_id").innerHTML;
         var sendRec = '';
         
         if ($(this).find(":selected").val() == 'early_decision') {sendRec = 'Early Decision'}
@@ -238,7 +240,7 @@ $('.student').on('click', function(e) {
 
 $("#addCollegeButton").on('click', function test() {
   
-  var studentId = document.getElementById("student_id").value;
+  var studentId = document.getElementById("student_id").innerHTML;
   var collegeName = document.getElementById("addCollege").value;
   var newChancing = document.getElementById('newChancing').value;
   var newMLChancing = document.getElementById('new_ml_chancing').innerHTML;
@@ -323,6 +325,7 @@ $("#addCollegeButton").on('click', function test() {
   
   $('#college_table').append(newRow);
 
+
   var saveData = {'student_id': studentId, 'college_name': collegeName, 'chancing': newChancing}
   saveData = JSON.stringify(saveData);
 
@@ -333,8 +336,7 @@ $("#addCollegeButton").on('click', function test() {
 
 
   $('.remove_college_button').on('click', function(e) {        
-    $(this).parent().parent().parent().remove();
-    
+    $(this).parent().parent().parent().remove();    
     var collegeName = $(this).parent().parent().parent().children('div').children('.college_name_cell').text();
     var removeCollege = {'student_id':studentId, 'college_name': collegeName}
     var removeData = JSON.stringify(removeCollege);
@@ -345,8 +347,9 @@ $("#addCollegeButton").on('click', function test() {
     }).then(response=>response.text()).then(input=>{ })    
   })
 
-  $('.committee_chancing').on('change', function(e) {
-    var studentId = document.getElementById("chance_student").value;
+  $('.counselor_chancing').on('change', function(e) {
+    
+    
     var sendChancing = '';
 
     if ($(this).find(":selected").val() == 'very_likely') {sendChancing = 'Very Likely'}
@@ -355,10 +358,12 @@ $("#addCollegeButton").on('click', function test() {
     if ($(this).find(":selected").val() == 'reach') {sendChancing = 'Reach'}
     if ($(this).find(":selected").val() == 'far_reach') {sendChancing = 'Far Reach'}
 
+    
+    var studentId = document.getElementById("student_id").innerHTML; 
     var saveData = {'student_id':studentId, 'college_name': this.id, 'chancing': sendChancing}
     saveData = JSON.stringify(saveData);
 
-    temp = fetch('/committee_chancing/update_chancing', {
+    temp = fetch('/counselor_chancing/update_chancing', {
       method: "POST",    
       body: saveData
     }).then(response=>response.text()).then(input=>{ })

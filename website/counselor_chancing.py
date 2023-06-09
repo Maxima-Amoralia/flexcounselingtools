@@ -12,9 +12,6 @@ from sqlalchemy.orm import Session
 counselor_chancing = Blueprint('counselor_chancing', __name__)
 
 
-
-
-
 @counselor_chancing.route("/counselor_chancing", methods=["POST","GET"])
 @login_required
 def loadStudentDatabase():
@@ -66,7 +63,7 @@ def updateRec():
     college = SelectedCollege.query.filter_by(student_id=input['student_id'], college_name=collegeName).first()
     
     college.counselor_rec=input['counselor_rec']
-    db.session.commit()    
+    db.session().commit()    
 
     student = StudentDatabase.query.filter_by(id=input['student_id']).first();
     student.counselor_chancing = True
@@ -93,12 +90,12 @@ def studentdata():
     colleges = SelectedCollege.query.filter_by(student_id=input['id']).all()
 
     
-    
     for college in colleges:
+        print(college.counselor_chancing)
         if not college.counselor_chancing:            
             college.counselor_chancing=college.committee_chancing
             db.session.commit()                
-        collegeList.append([college.college_name, college.student_chancing, college.ml_chancing, college.committee_chancing, college.committee_chancing, college.counselor_rec])        
+        collegeList.append([college.college_name, college.student_chancing, college.ml_chancing, college.committee_chancing, college.counselor_chancing, college.counselor_rec])        
     
 
 
