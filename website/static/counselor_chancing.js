@@ -178,10 +178,7 @@ $('.student').on('click', function(e) {
 
 
       $('.remove_college_button').on('click', function(e) {     
-           
-        
-
-        alert(studentId);
+                 
         var collegeName = $(this).parent().parent().parent().children('div').children('.college_name_cell').text();
         var removeCollege = {'student_id':studentId, 'college_name': collegeName}
         var removeData = JSON.stringify(removeCollege);
