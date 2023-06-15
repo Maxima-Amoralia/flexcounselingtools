@@ -39,11 +39,20 @@ def updateChancing():
 
     input = json.loads(request.data)
     
+    print(input['college_name'])
+    print(input['student_id'])
+
     collegeName = input['college_name'].replace('_', ' ')
 
     college = SelectedCollege.query.filter_by(student_id=input['student_id'], college_name=collegeName).first()
-    college.counselor_chancing=input['chancing'];
-    db.session.commit()
+    
+    if college:
+        college.counselor_chancing=input['chancing'];
+        db.session.commit()
+    else:
+        new_college = SelectedCollege(college_name=collegeName, student_id=input['student_id'], counselor_chancing=input['chancing'])
+        db.session.add(new_college)
+        db.session.commit()
 
     student = StudentDatabase.query.filter_by(id=input['student_id']).first();
     student.counselor_chancing = True
@@ -256,6 +265,7 @@ def saveMap():
             db.sesssion.commit()
 
         print(college.college_name)
+        print(college.counselor_chancing)
 
         if college.counselor_chancing == "Far Reach":
             targetColumn = 0

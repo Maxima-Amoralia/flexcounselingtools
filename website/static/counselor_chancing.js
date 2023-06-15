@@ -257,7 +257,7 @@ $("#addCollegeButton").on('click', function test() {
   newRow = newRow+"<div class='college_chancing_cell'>"+newMLChancing+"</div>";
   newRow = newRow+"<div class='college_chancing_cell'>"+"-----"+"</div>";
 
-  newRow = newRow+"<div class='college_chancing_cell'><select class='committee_chancing standard_select' id='"+collegeName;
+  newRow = newRow+"<div class='college_chancing_cell'><select class='counselor_chancing standard_select' id='"+collegeName;
   newRow = newRow+"' name='"+collegeName+"'>";
   
   newRow = newRow+"<option value='none' hidden='true'>Select</option>";
@@ -322,11 +322,11 @@ $("#addCollegeButton").on('click', function test() {
   
   $('#college_table').append(newRow);
 
-
   var saveData = {'student_id': studentId, 'college_name': collegeName, 'chancing': newChancing}
   saveData = JSON.stringify(saveData);
 
-  temp = fetch('/committee_chancing/update_chancing', {
+
+  temp = fetch('/counselor_chancing/update_chancing', {
     method: "POST",    
     body: saveData
   }).then(response=>response.text()).then(input=>{ })
