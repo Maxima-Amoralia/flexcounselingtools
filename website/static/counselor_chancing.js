@@ -365,6 +365,25 @@ $("#addCollegeButton").on('click', function test() {
       body: saveData
     }).then(response=>response.text()).then(input=>{ })
   })
+
+  $('.counselor_rec').on('change', function(e) {        
+                
+    var sendRec = '';
+    
+    if ($(this).find(":selected").val() == 'early_decision') {sendRec = 'Early Decision'}
+    if ($(this).find(":selected").val() == 'early_action') {sendRec = 'Early Action'}
+    if ($(this).find(":selected").val() == 'alternate_major') {sendRec = 'Alternate Major'}
+    if ($(this).find(":selected").val() == 'not_recommended') {sendRec = 'Not Recommended'}        
+
+    var saveData = {'student_id':studentId, 'college_name': this.id, 'counselor_rec': sendRec}
+    saveData = JSON.stringify(saveData);
+
+    temp = fetch('/counselor_chancing/update_rec', {
+      method: "POST",    
+      body: saveData
+    }).then(response=>response.text()).then(input=>{ })
+  })
+
 })
 
 
