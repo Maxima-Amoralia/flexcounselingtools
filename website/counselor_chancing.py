@@ -148,7 +148,7 @@ def saveMap():
     templateId = '1wW--iQ3J_wtR6gAMMGOWUvk45REvXaDA1Sj9DkL8QNc'
 
     input = json.loads(request.data)    
-    colleges = SelectedCollege.query.filter_by(student_id=input['id']).all()
+    colleges = SelectedCollege.query.filter_by(student_id=input['id']).order_by('college_name').all()
     student = StudentDatabase.query.filter_by(id = input['id']).first()
 
     from google.auth.transport.requests import Request
